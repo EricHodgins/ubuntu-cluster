@@ -1,3 +1,5 @@
 .gitignore
 
 notes_internal.txt
+
+*.agekey
