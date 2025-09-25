@@ -11,6 +11,7 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./apps/staging
+  # Prune True: Flux will delete resources that are no longer defined in the source (clean things up)
   prune: true
   decryption:
     provider: sops

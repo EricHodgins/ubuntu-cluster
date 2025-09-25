@@ -25,6 +25,9 @@ spec:
             - containerPort: 9090
 
           envFrom:
+            # Uncomment if using ConfigMap for env vars
+            # - configMapRef:
+            #     name: linkding-container-env
             - secretRef:
                 name: linkding-container-env
 
