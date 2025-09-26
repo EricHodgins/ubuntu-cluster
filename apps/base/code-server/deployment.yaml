@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: code-server
+  labels:
+    app: code-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: code-server
+  template:
+    metadata:
+      labels:
+        app: code-server
+    spec:
+      containers:
+        # VS Code in browser
+        - name: code-server
+          image: codercom/code-server:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: code-server-secret
+
+          volumeMounts:
+            - name: code-data
+              mountPath: /home/coder/projects
+      volumes:
+        - name: code-data
+          persistentVolumeClaim:
+            claimName: code-server-pvc
