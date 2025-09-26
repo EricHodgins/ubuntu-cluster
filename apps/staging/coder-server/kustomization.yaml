@@ -4,3 +4,5 @@ namespace: code-server
 resources:
   - ../../base/code-server
   - cloudflare.yaml
+  - cloudflare-secret.yaml
+  - code-server-secret.yaml
