@@ -17,7 +17,7 @@ spec:
       containers:
         # VS Code in browser
         - name: code-server
-          image: codercom/code-server:latest
+          image: erichodgins/code-server-node:1.0.0
           ports:
             - containerPort: 8080
           envFrom:
