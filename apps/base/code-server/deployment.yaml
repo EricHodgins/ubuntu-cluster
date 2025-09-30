@@ -20,6 +20,14 @@ spec:
           image: erichodgins/code-server-node:1.0.2
           ports:
             - containerPort: 8080
+
+          # Force code-server to use Microsoft Marketplace instead of Open VSX
+          env:
+            - name: CODE_SERVER_USE_MSWORKBENCH
+              value: 'true'
+            - name: CODE_SERVER_VSCODE_FETCH_LICENSE
+              value: 'true'
+
           envFrom:
             - secretRef:
                 name: code-server-secret
