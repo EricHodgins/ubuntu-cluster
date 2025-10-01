@@ -79,6 +79,7 @@ data:
     ingress:
     - hostname: ignition.onemanwolfpac.net
       service: http://ignition:8088
+      websocket: true
 
     # This rule sends traffic to the built-in hello-world HTTP server. This can help debug connectivity
     # issues. If hello.example.com resolves and tunnel.example.com does not, then the problem is
