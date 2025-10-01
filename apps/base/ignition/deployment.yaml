@@ -13,6 +13,21 @@ spec:
       labels:
         app: ignition
     spec:
+      # InitContainer copies default files to PVC if empty
+      initContainers:
+        - name: copy-ignition-defaults
+          image: inductiveautomation/ignition:8.3.0
+          command:
+            - sh
+            - -c
+            - |
+              if [ -z "$(ls -A /data)" ]; then
+                cp -r /usr/local/bin/ignition/* /data/
+              fi
+          volumeMounts:
+            - name: ignition-data
+              mountPath: /data
+
       containers:
         - name: ignition
           image: inductiveautomation/ignition:8.3.0
