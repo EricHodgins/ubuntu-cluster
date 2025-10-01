@@ -18,9 +18,6 @@ spec:
           image: inductiveautomation/ignition:8.3.0
           ports:
             - containerPort: 8088 # default web server port
-          env:
-            - name: IGNITION_HOME
-              value: /usr/local/share/ignition
           envFrom:
             - secretRef:
                 name: ignition-container-env
