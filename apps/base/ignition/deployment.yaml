@@ -27,4 +27,4 @@ spec:
       volumes:
         - name: ignition-data
           persistentVolumeClaim:
-            claimName: ignition-data
+            claimName: ignition-data-pvc
