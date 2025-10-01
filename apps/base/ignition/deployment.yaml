@@ -23,7 +23,7 @@ spec:
                 name: ignition-container-env
           volumeMounts:
             - name: ignition-data
-              mountPath: /var/lib/ignition
+              mountPath: /usr/local/share/ignition
       volumes:
         - name: ignition-data
           persistentVolumeClaim:
