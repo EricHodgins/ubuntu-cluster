@@ -19,8 +19,8 @@ spec:
           ports:
             - containerPort: 8088 # default web server port
           envFrom:
-            - configMapRef:
-                name: ignition-config
+            - secretRef:
+                name: ignition-container-env
           volumeMounts:
             - name: ignition-data
               mountPath: /var/lib/ignition

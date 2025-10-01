@@ -5,3 +5,4 @@ resources:
   - ../../base/ignition
   - cloudflare.yaml
   - cloudflare-secret.yaml
+  - ignition-container-env-secret.yaml
