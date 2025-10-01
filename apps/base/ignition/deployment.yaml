@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ignition
+  namespace: ignition
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ignition
+  template:
+    metadata:
+      labels:
+        app: ignition
+    spec:
+      containers:
+        - name: ignition
+          image: inductiveautomation/ignition:latest
+          ports:
+            - containerPort: 8088 # default web server port
+          envFrom:
+            - configMapRef:
+                name: ignition-config
+          volumeMounts:
+            - name: ignition-data
+              mountPath: /var/lib/ignition
+      volumes:
+        - name: ignition-data
+          persistentVolumeClaim:
+            claimName: ignition-data
