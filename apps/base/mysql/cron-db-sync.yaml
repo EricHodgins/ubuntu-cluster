@@ -17,6 +17,8 @@ spec:
               envFrom:
                 - secretRef:
                     name: cron-db-sync-secret
+                - secretRef:
+                    name: mysql-secret
 
               command:
                 - sh
