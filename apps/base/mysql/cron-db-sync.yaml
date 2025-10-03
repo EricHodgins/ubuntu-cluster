@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mysql-daily-sync
+spec:
+  # Schedule job to run at 12pm every day
+  schedule: '0 12 * * *'
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: mysql-sync
+              image: mysql:8.0
+
+              envFrom:
+                - secretRef:
+                    name: cron-db-sync-secret
+
+              command:
+                - sh
+                - -c
+                - |
+                  mysqldump -h $REMOTE_HOST -u $REMOTE_USER -p$REMOTE_PASS $REMOTE_DB \
+                  | mysql -h $LOCAL_HOST -u root -p$MYSQL_ROOT_PASSWORD $LOCAL_DB
+          restartPolicy: OnFailure
