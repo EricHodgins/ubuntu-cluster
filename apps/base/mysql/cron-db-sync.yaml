@@ -3,8 +3,8 @@ kind: CronJob
 metadata:
   name: mysql-daily-sync
 spec:
-  # Schedule job to run at 12:38pm every day
-  schedule: '38 12 * * *'
+  # Schedule job to run at 14:28pm every day
+  schedule: '28 14 * * *'
   timeZone: 'America/Toronto'
   jobTemplate:
     spec:
