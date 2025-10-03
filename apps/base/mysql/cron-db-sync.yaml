@@ -22,8 +22,9 @@ spec:
                 - sh
                 - -c
                 - |
-                  mysqldump --ssl-mode=DISABLED \
-                    -h $REMOTE_HOST -u $REMOTE_USER -p$REMOTE_PASS $REMOTE_DB \
-                  | mysql --ssl-mode=DISABLED \
+                  echo "Starting MySQL sync..."
+                  mysqldump \
+                    -h $REMOTE_HOST -u$REMOTE_USER -p$REMOTE_PASS $REMOTE_DB \
+                  | mysql \
                     -h $LOCAL_HOST -u root -p$MYSQL_ROOT_PASSWORD $LOCAL_DB
           restartPolicy: OnFailure
