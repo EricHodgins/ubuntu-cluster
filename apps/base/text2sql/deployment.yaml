@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: text2sql
-          image: erichodgins/text2sql:1.0.0
+          image: erichodgins/text2sql:1.0.1
           ports:
             - containerPort: 11434
           resources:
