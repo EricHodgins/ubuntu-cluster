@@ -3,9 +3,14 @@ kind: CronJob
 metadata:
   name: mysql-daily-sync
 spec:
-  # Schedule job to run at 9:15am every day
-  schedule: '15 9 * * *'
+  # Schedule job to run at 2:00pm every day
+  schedule: '0 14 * * *'
   timeZone: 'America/Toronto'
+  startingDeadlineSeconds: 7200 # catch up within 2 hours if missed
+  concurrencyPolicy: Forbid # optional: don’t overlap jobs
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+
   jobTemplate:
     spec:
       template:

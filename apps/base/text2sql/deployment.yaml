@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: text2sql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: text2sql
+  template:
+    metadata:
+      labels:
+        app: text2sql
+    spec:
+      containers:
+        - name: text2sql
+          image: erichodgins/text-to-sql:1.0.0
+          ports:
+            - containerPort: 11434
+          resources:
+            requests:
+              memory: '8Gi'
+              cpu: '2'
+            limits:
+              memory: '12Gi'
+              cpu: '4'
+          volumeMounts:
+            - name: ollama-models
+              mountPath: /root/.ollama # Persist model registration
+      volumes:
+        - name: ollama-models
+          persistentVolumeClaim:
+            claimName: ollama-models-pvc
