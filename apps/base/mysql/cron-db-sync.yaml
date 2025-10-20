@@ -29,10 +29,18 @@ spec:
                 - sh
                 - -c
                 - |
-                  echo "Starting MySQL sync test..."
-                  mysqldump --ssl-mode=DISABLED \
-                    -h $REMOTE_HOST -u$REMOTE_USER -p$REMOTE_PASS $REMOTE_DB \
-                  | mysql \
-                    -h $LOCAL_HOST -u root -p$MYSQL_ROOT_PASSWORD $LOCAL_DB
+                  set -e
+                  echo "Starting MySQL multi-database sync..."
+
+                  for DB in $REMOTE_DB fmc_hmi_staging; do
+                    echo "Syncing $DB..."
+                    mysqldump --ssl-mode=DISABLED \
+                      -h $REMOTE_HOST -u$REMOTE_USER -p$REMOTE_PASS $DB \
+                    | mysql \
+                      -h $LOCAL_HOST -u root -p$MYSQL_ROOT_PASSWORD $DB
+                    echo "✅ $DB sync complete"
+                  done
+
+                  echo "🎉 All databases synced successfully at $(date)"
 
           restartPolicy: OnFailure
