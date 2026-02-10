@@ -4,5 +4,5 @@ resources:
   - namespace.yaml
   - service.yaml
   - deployment-public.yaml
-  # - deployment-worker.yaml
+  - deployment-worker.yaml
   - storage.yaml
