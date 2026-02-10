@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: http-upload
+  name: http-uploader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-uploader
+  template:
+    metadata:
+      labels:
+        app: http-uploader
+    spec:
+      containers:
+        - name: uploader
+          image: http-uploader:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+          claimName: drop-pvc

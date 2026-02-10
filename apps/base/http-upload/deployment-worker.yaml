@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: http-upload
+  name: file-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: file-processor
+  template:
+    metadata:
+      labels:
+        app: file-processor
+    spec:
+      containers:
+        - name: processor
+          image: alpine
+          command:
+            - /bin/sh
+            - -c
+            - |
+              mkdir -p /data/incoming /data/processing /data/processed
+
+              while true; do
+                for f in /data/incoming/*; do
+                  [ -f "$f" ] || continue
+
+                  size1=$(stat -c%s "$f")
+                  sleep 15
+                  size2=$(stat -c%s "$f")
+
+                  if [ "$size1" -eq "$size2" ]; then
+                    echo "Stable: $f"
+                    mv "$f" /data/processing/
+                  fi
+                done
+
+                for f in /data/processing/*; do
+                  [ -f "$f" ] || continue
+                  echo "Finalizing: $f"
+                  mv "$f" /data/processed/
+                done
+
+                sleep 5
+              done
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: drop-pvc
