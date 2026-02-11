@@ -13,6 +13,9 @@ spec:
       labels:
         app: http-uploader
     spec:
+      securityContext:
+        fsGroup: 1000
+
       containers:
         - name: uploader
           image: erichodgins/http-uploader:latest
@@ -24,7 +27,11 @@ spec:
                 name: upload-token
 
           securityContext:
+            runAsNonRoot: true
             allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
 
           volumeMounts:
             - name: data
