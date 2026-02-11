@@ -18,6 +18,14 @@ spec:
           image: erichodgins/http-uploader:latest
           ports:
             - containerPort: 8080
+
+          envFrom:
+            - secretRef:
+                name: upload-token
+
+          securityContext:
+            allowPrivilegeEscalation: false
+
           volumeMounts:
             - name: data
               mountPath: /data

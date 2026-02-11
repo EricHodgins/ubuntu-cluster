@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: http-upload
 resources:
   - ../../base/http-upload
+  - http-upload-env-secret.yaml
   - cloudflare.yaml
   - cloudflare-secret.yaml
