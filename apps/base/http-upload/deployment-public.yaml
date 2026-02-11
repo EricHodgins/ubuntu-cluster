@@ -16,6 +16,14 @@ spec:
       securityContext:
         fsGroup: 1000
 
+      initContainers:
+        - name: volume-permissions
+          image: busybox
+          command: ['sh', '-c', 'chown -R 1000:1000 /data']
+          volumeMounts:
+            - name: data
+              mountPath: /data
+
       containers:
         - name: uploader
           image: erichodgins/http-uploader:latest
