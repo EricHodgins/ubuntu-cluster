@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: uploader
-          image: erichodgins/http-uploader:latest
+          image: erichodgins/http-uploader:1.0.0
           ports:
             - containerPort: 8080
 
