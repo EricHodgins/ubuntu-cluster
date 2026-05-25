@@ -7,4 +7,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi # enough to store quantized 7B model + registration
+      storage: 20Gi # enough to store quantized 7B model + registration
