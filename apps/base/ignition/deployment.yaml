@@ -52,7 +52,6 @@ spec:
         - name: ignition-data
           persistentVolumeClaim:
             claimName: ignition-data-pvc
-
 # apiVersion: apps/v1
 # kind: Deployment
 # metadata:
