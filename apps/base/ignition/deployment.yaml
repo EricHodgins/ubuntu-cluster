@@ -29,9 +29,9 @@ spec:
                 name: ignition-container-env
 
           volumeMounts:
-            # ✅ correct persistent Ignition data directory
+            # ✅ THIS is the ONLY persistent mount you should use
             - name: ignition-data
-              mountPath: /usr/local/bin/ignition/data
+              mountPath: /data
 
       volumes:
         - name: ignition-data
