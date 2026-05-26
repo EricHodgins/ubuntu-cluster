@@ -28,10 +28,14 @@ spec:
             - secretRef:
                 name: ignition-container-env
 
+          env:
+            # 👇 this is the key piece most people miss
+            - name: IGNITION_DATA_DIR
+              value: /data
+
           volumeMounts:
-            # ✅ THIS is the correct persistence path for Ignition
             - name: ignition-data
-              mountPath: /usr/local/bin/ignition/data
+              mountPath: /data
 
       volumes:
         - name: ignition-data
