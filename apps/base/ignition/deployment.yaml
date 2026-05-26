@@ -19,7 +19,7 @@ spec:
     spec:
       initContainers:
         - name: init-ignition-data
-          image: inductiveautomation/ignition:8.1.42
+          image: inductiveautomation/ignition:8.3.0
           command:
             - sh
             - -c
@@ -35,7 +35,7 @@ spec:
 
       containers:
         - name: ignition
-          image: inductiveautomation/ignition:8.1.42
+          image: inductiveautomation/ignition:8.3.0
 
           ports:
             - containerPort: 8088
