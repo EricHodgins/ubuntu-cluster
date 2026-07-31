@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: precisionpac-api-config
+  namespace: api-precisionpac
+data:
+  APP_NAME: "PrecisionPac API"
+  APP_VERSION: "0.1.0"
+  ENVIRONMENT: "production"
+
+  LOG_LEVEL: "INFO"
+
+  HOST: "0.0.0.0"
+  PORT: "8000"

@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: api-precisionpac-secrets
+    namespace: api-precisionpac
+type: Opaque
+stringData:
+    AUTH0_DOMAIN: ENC[AES256_GCM,data:GaoCoi7J39wMX6pLo/ysgkOuk5Cp5OStCBRYPmidezdw,iv:9etmkmCu6XslD7OLDmYoCG0sC8HeWTRsBzz3puUriDA=,tag:RiEAaeSbDQE4pq10mTb6jQ==,type:str]
+    AUTH0_AUDIENCE: ENC[AES256_GCM,data:l5Uq5DHHcErhckY5rEnGdp5oa+YVoVDasGg=,iv:bJ7gqPeSeziHyvSL004EIxlzcmTJiXYAW9aYW0ozwL8=,tag:+brsmmHAIVUIvQk6j9/9xQ==,type:str]
+    OLTP_DATABASE_URL: ENC[AES256_GCM,data:t1aUgRWyM1WWPxEdMZIi+5nNbtS10VLnVPmHQ9mp0bqOYFmwnwIshH3VT365z9wLn2x+orXf5jg1sIO5r8hF/9tjvhtB94C2bSd2LlV4NCCG,iv:OHiUKe4NEvrAp9RT1A8ml+3LhdIlmk7CYOLlFEeAyWM=,tag:AuqNulooaFLxOsiIVlEA+w==,type:str]
+    OLAP_DATABASE_URL: ENC[AES256_GCM,data:h+GJ4sqgXd9Y/ZvLEr9qo7QC6O2drXIY8wLydcUHW44q++sx/1mglw6Md312h+FGjVxkhfqNrfwA/g5gp8rMbP1dgVuSaMXrTpxYGDHkrexu,iv:AjnmIReSqAZmbNxuiseH0OCPVgcQ3dOlQMHqaZ5lpZk=,tag:KYO1kJQ3/H8zyRQI9g+2qg==,type:str]
+sops:
+    age:
+        - recipient: age10yaqpm2e7g6mjl7mkdm2wt8qqj0ndgxv93tda55ly02frxvvlplqrdgdsg
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBlQkVoOWluOEFyVFJUT3p6
+            cXVaejdnQlZKZWJQbjdHbUt4S1Y4b0o0elUwCnVLK0tlcEZ4cWNVNU45Y29TalFF
+            YVQzMlFKU1piSFhqditMMi9QZkRqcmcKLS0tIEhvdFVCaVpBNHBYalhCYlNhU3o4
+            S3c5djhjUWM3YnlMWU1PQ3hKTUFtZjAKWai8ZL6orwEBtw9QiWDBD4n/jDtQDFrq
+            DlWackjG4wfOdevfa8+UQChRxgu0WXFyqouEZCuDrIUW8/KaX1KpDQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-07-31T03:56:53Z"
+    mac: ENC[AES256_GCM,data:YufM4DF8STVX+u1VdGNOUzlE4Eh6cEgJR376cec4WA7kHW4Lhp9M0OQLKkssV9nqE7rbnYysYcC/UpwJAgB9yxDTsmGWHDqQC6xJCArK7gsgqW/sr+FPgauxcmsat5txd3dX2rdPGuCojNaLhzVDqVg1Q8mCbuk89vw8fqikpC8=,iv:Mibom3jfS28ddFJY7vQqAiP1z4hP5SBRdb5axUFKKwU=,tag:syBf9UVnAgoO3X2vWEIrmA==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
