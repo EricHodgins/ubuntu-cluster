@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: api-precisionpac
 resources:
   - ../../base/api-precisionpac
-  - api-precisionpac-env-secret.yaml
+  - api-precisionpac-env.yaml
   - cloudflare.yaml
   - cloudflare-secret.yaml
