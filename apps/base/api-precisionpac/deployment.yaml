@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: api-precisionpac
-  namespace: api-precisionpac
+  name: api-precisionpac  
 
 spec:
   replicas: 2
@@ -26,7 +25,7 @@ spec:
           imagePullSecrets:
             - name: artifact-registry
 
-          image: northamerica-northeast2-docker.pkg.dev/aqueous-cabinet-203817/api-precisionpac/api-precisionpac:0.1.0
+          image: northamerica-northeast2-docker.pkg.dev/aqueous-cabinet-203817/api-precisionpac/api-precisionpac:0.1.0                 
           imagePullPolicy: IfNotPresent
 
           ports:
