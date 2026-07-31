@@ -17,12 +17,11 @@ spec:
       labels:
         app: api-precisionpac
 
-    imagePullSecrets:
-      - name: artifact-registry
       
     spec:
-
-
+      imagePullSecrets:
+        - name: artifact-registry
+        
       containers:
         - name: api-precisionpac
 
