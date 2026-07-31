@@ -19,11 +19,12 @@ spec:
 
     spec:
 
+      imagePullSecrets:
+        - name: artifact-registry
+        
       containers:
         - name: api-precisionpac
 
-          imagePullSecrets:
-            - name: artifact-registry
 
           image: northamerica-northeast2-docker.pkg.dev/aqueous-cabinet-203817/api-precisionpac/api-precisionpac:0.1.0                 
           imagePullPolicy: IfNotPresent
