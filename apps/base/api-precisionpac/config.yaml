@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: precisionpac-api-config  
+  name: api-precisionpac-config  
 data:
   APP_NAME: "PrecisionPac API"
   APP_VERSION: "0.1.0"
@@ -11,4 +11,3 @@ data:
 
   HOST: "0.0.0.0"
   PORT: "8000"
-  
