@@ -32,7 +32,7 @@ spec:
                   set -e
                   echo "Starting MySQL multi-database sync..."
 
-                  for DB in $REMOTE_DB fmc_hmi_staging; do
+                  for DB in $REMOTE_DB fmc_hmi_staging retail_ordering; do
                     echo "Syncing $DB..."
                     mysqldump --ssl-mode=DISABLED \
                       -h $REMOTE_HOST -u$REMOTE_USER -p$REMOTE_PASS $DB \
