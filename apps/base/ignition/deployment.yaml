@@ -76,6 +76,12 @@ spec:
       containers:
         - name: ignition
           image: inductiveautomation/ignition:8.3.3
+          args:
+            - "-n"
+            - "ignition"
+            - "--"
+            - "wrapper.java.maxmemory=4096"
+            - "wrapper.java.initmemory=1024"          
 
           ports:
             - containerPort: 8088
