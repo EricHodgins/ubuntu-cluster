@@ -5,3 +5,15 @@ resources:
   - service.yaml
   - deployment.yaml
   - storage.yaml
+
+configMapGenerator:
+  - name: precisionpac
+    files:
+      - themes/precisionpac/index.css
+      - themes/precisionpac/config.json
+      - themes/precisionpac/resource.json      
+  - name: precisionpac-light
+    files:
+      - themes/precisionpac-light/index.css
+      - themes/precisionpac-light/config.json
+      - themes/precisionpac-light/resource.json      

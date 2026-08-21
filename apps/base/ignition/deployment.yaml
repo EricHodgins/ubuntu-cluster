@@ -1,43 +1,3 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: ignition
-#   namespace: ignition
-
-# spec:
-#   replicas: 1
-
-#   selector:
-#     matchLabels:
-#       app: ignition
-
-#   template:
-#     metadata:
-#       labels:
-#         app: ignition
-
-#     spec:
-#       containers:
-#         - name: ignition
-#           image: inductiveautomation/ignition:8.3.0
-
-#           ports:
-#             - containerPort: 8088
-
-#           envFrom:
-#             - secretRef:
-#                 name: ignition-container-env
-
-#           volumeMounts:
-#             # ✅ THIS is the ONLY persistent mount you should use
-#             - name: ignition-data
-#               mountPath: /data
-
-#       volumes:
-#         - name: ignition-data
-#           persistentVolumeClaim:
-#             claimName: ignition-data-pvc
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -93,63 +53,18 @@ spec:
           volumeMounts:
             - name: ignition-data
               mountPath: /usr/local/bin/ignition/data
+            - name: precisionpac
+              mountPath: /usr/local/bin/ignition/data/config/resources/core/com.inductiveautomation.perspective/themes/precisionpac
+            - name: precisionpac-light
+              mountPath: /usr/local/bin/ignition/data/config/resources/core/com.inductiveautomation.perspective/themes/precisionpac-light
 
       volumes:
         - name: ignition-data
           persistentVolumeClaim:
             claimName: ignition-data-pvc
-
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: ignition
-#   namespace: ignition
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: ignition
-#   template:
-#     metadata:
-#       labels:
-#         app: ignition
-#     spec:
-#       # InitContainer copies default files to PVC if empty
-#       initContainers:
-#         - name: copy-ignition-defaults
-#           image: inductiveautomation/ignition:8.1.42
-#           command:
-#             - sh
-#             - -c
-#             - |
-#               if [ -z "$(ls -A /data)" ]; then
-#                 cp -r /usr/local/bin/ignition/* /data/
-#               fi
-
-#               # dev-only: attempt to allow unsigned modules
-#               echo "-Dignition.allowunsignedmodules=true" >> /data/javaopts.txt
-#           volumeMounts:
-#             - name: ignition-data
-#               mountPath: /data
-
-#       containers:
-#         - name: ignition
-#           image: inductiveautomation/ignition:8.1.42
-#           ports:
-#             - containerPort: 8088 # default web server port
-
-#           # Dev-friendly JVM flags
-#           env:
-#             - name: JAVA_OPTS
-#               value: '-Dignition.allowunsignedmodules=true'
-
-#           envFrom:
-#             - secretRef:
-#                 name: ignition-container-env
-#           volumeMounts:
-#             - name: ignition-data
-#               mountPath: /usr/local/bin/ignition
-#       volumes:
-#         - name: ignition-data
-#           persistentVolumeClaim:
-#             claimName: ignition-data-pvc
+        - name: precisionpac
+          configMap:
+            name: ignition-theme-precisionpac
+        - name: precisionpac-light
+          configMap:
+            name: ignition-theme-precisionpac-light

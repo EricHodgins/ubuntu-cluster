@@ -1,0 +1,2867 @@
+/*
+ * PrecisionPac Custom Perspective Theme
+ * Generated from the project's Advanced Stylesheet.
+ *
+ * This file is Gateway-scoped. Project Style Classes (.psc-*) remain valid,
+ * and the existing pp-* class names are intentionally preserved.
+ */
+
+@import "../dark/index.css";
+
+:root          → all --pp-* tokens, globally available
+                    to every component with no class needed
+
+   .ia-*          → overrides Perspective's OWN internal classes
+                    directly on the element. Nothing to set on
+                    the component — they just apply globally.
+
+   .psc-*         → your custom Style Classes. In the component
+                    Property Editor, type the name WITHOUT .psc-
+                    e.g. type "pp-btn-primary" not ".psc-pp-btn-primary"
+
+   BUTTON VARIANT QUICK REFERENCE:
+   ─────────────────────────────────────────────────────────────
+   Primary   → solid red bg, white text    (classes: pp-btn-primary)
+   Secondary → transparent, blue border    (classes: pp-btn-secondary)
+   Ghost     → transparent, muted border   (classes: pp-btn-ghost)
+   Danger    → transparent, red border     (classes: pp-btn-danger)
+   Success   → transparent, green border   (classes: pp-btn-success)
+   Gold      → transparent, gold border    (classes: pp-btn-gold)
+   + sm/lg   → stack with variant          (classes: pp-btn-primary pp-btn-sm)
+   ============================================================ */
+
+
+/* ══════════════════════════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+   ══════════════════════════════════════════════════════════════ */
+@keyframes pp-pulse    { 0%,100%{opacity:1}    50%{opacity:.25} }
+/* ============================================================
+   PrecisionPac Design System — Ignition Advanced Stylesheet
+   FINAL VERSION — extracted directly from working HTML source
+   
+   HOW IT WORKS:
+   ─────────────────────────────────────────────────────────────
+   
+@keyframes pp-scanline { 0%{top:-2px}          100%{top:100%}   }
+@keyframes pp-spin {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes pp-spin {
+  from { -webkit-transform: rotate(0deg);   }
+  to   { -webkit-transform: rotate(360deg); }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   GLOBAL TOKENS — :root
+   Extracted 1:1 from the HTML source file
+══════════════════════════════════════════════════════════════ */
+:root {
+  /* Brand colors */
+  --pp-blue-hover:  #3a7bc8;
+  --pp-red-hover:   #c62b21;
+  --pp-default: #FFFFFF;
+  --pp-blue:    #4A90E2;
+  --pp-red:     #EF3E33;
+  --pp-primary: #4A90E2;
+  --pp-gold:    #F6B93B;
+  --pp-green:   #8BC34A;
+  --pp-white:   #FFFFFF;
+  --pp-orange:      #FF9800;
+
+
+  /* Blue tints */
+  --pp-b10:     rgba(74,144,226,.1);
+  --pp-b20:     rgba(74,144,226,.2);
+  --pp-b35:     rgba(74,144,226,.35);
+
+  /* Red tints */
+  --pp-r10:     rgba(239,62,51,.1);
+  --pp-r20:     rgba(239,62,51,.2);
+  --pp-r35:     rgba(239,62,51,.35);
+
+  /* Green tints */
+  --pp-g10:     rgba(139,195,74,.1);
+  --pp-g25:     rgba(139,195,74,.25);
+
+  /* Gold tints */
+  --pp-gold10:  rgba(246,185,59,.1);
+  --pp-gold25:  rgba(246,185,59,.25);
+
+  /* Orange Tints  */
+  --pp-orange-10:   rgba(255,152,0,0.10);
+  --pp-orange-25:   rgba(255,152,0,0.25);
+  --pp-orange-35:   rgba(255,152,0,0.35);
+
+  /* Grey tints — renamed from g10/g20/g35/g55/g75 to grey10/grey20/grey35/grey55/grey75
+     to stop colliding with the GREEN tints above (--pp-g10/g25). The old names
+     silently overwrote the green tint, which made every "success" badge/pill/
+     button render grey instead of green. */
+  --pp-grey:    #8A9BB0;
+  --pp-grey10:  rgba(138,155,176,.1);
+  --pp-grey20:  rgba(138,155,176,.2);
+  --pp-grey35:  rgba(138,155,176,.35);
+  --pp-grey55:  rgba(138,155,176,.55);
+  --pp-grey75:  rgba(138,155,176,.75);
+
+
+  /* Backgrounds */
+  --pp-bg0:     #020810;
+  --pp-bg1:     #030c18;
+  --pp-bg2:     #040f1e;
+  --pp-bg3:     #071525;
+
+  /* Text */
+  --pp-txt:     #c8dff5;
+  --pp-txt2:    rgba(160,200,255,.55);
+  --pp-txt3:    rgba(120,170,220,.35);
+  --pp-heading: var(--pp-blue);
+
+  /* Borders */
+  --pp-bdr:     rgba(74,144,226,.15);
+  --pp-bdr2:    rgba(74,144,226,.25);
+
+  /* Status text (alerts/toasts — readable on dark bg) */
+  --pp-info-c:    rgba(160,200,255,.8);
+  --pp-danger-c:  rgba(255,160,150,.8);
+  --pp-success-c: rgba(180,230,130,.8);
+  --pp-warning-c: rgba(255,220,130,.8);
+  --pp-scrim:     rgba(2,8,16,.85);
+
+  /* Fonts */
+  --pp-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --pp-font-size: 14px;
+
+  /* HUDS  */
+  --pp-hud-bar-track-bg-col: #030c18;
+  --pp-hud-bar-track-border-col: rgba(74,144,226,.35);
+
+  --pp-hud-bar-fill-light-bg-col: rgba(74,144,226,.1);
+  --pp-hud-bar-fill-medium-bg-col: rgba(74,144,226,.35);
+  --pp-hud-bar-fill-dark-bg-col: #4A90E2;
+
+  --pp-hud-metric-color: #FFFFFF;
+  
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHT THEME — same variable names, light-mode values.
+   Apply the .theme-light class to a top-level container (see the
+   binding instructions provided alongside this file) and every
+   component below re-themes automatically since they all read
+   from var(--pp-*) rather than hardcoded colors.
+   ══════════════════════════════════════════════════════════════ */
+
+
+* {
+    font-family: var(--pp-font) !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   PERSPECTIVE .ia- OVERRIDES
+   These target Perspective's own internal element classes.
+   No style > classes needed — they apply to every instance.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── ALL BUTTONS — base reset matching .btn in HTML ── */
+.ia-button {
+  display:        inline-flex        !important;
+  align-items:    center             !important;
+  gap:            6px                !important;
+  cursor:         pointer            !important;
+  border-radius:  2px                !important;
+  font-size:      12px               !important;
+  font-weight:    500                !important;
+  letter-spacing: .05em              !important;
+  padding:        8px 16px           !important;
+  border:         none               !important;
+  transition:     opacity .15s ease,
+                  transform .15s ease,
+                  background-color .15s ease,
+                  border-color .15s ease  !important;
+}
+
+.ia-button:hover  { opacity: .82                    !important; }
+.ia-button:active { transform: scale(.97)           !important; }
+
+/* Inner text div — inherit from button */
+.ia-button .text {
+  color:          inherit  !important;
+  font-size:      inherit  !important;
+  font-weight:    inherit  !important;
+  letter-spacing: inherit  !important;
+}
+
+/* ── Perspective's built-in "primary" type ── */
+.ia_button--primary {
+  background-color: var(--pp-blue) !important;
+  color:            #fff           !important;
+  border:           none           !important;
+}
+
+.ia_button--primary:hover {
+  background-color: var(--pp-blue-hover) !important;
+  opacity:          1             !important;
+}
+
+.ia_button--primary .text { 
+  color: #fff !important; 
+}
+
+/* Targets Perspective's icon element directly */
+/**/
+/**/
+/* Icon color utilities — targets the SVG fill directly */
+.psc-pp-icon-blue path,
+.psc-pp-icon-blue svg,
+.psc-pp-icon-blue .ia-icon svg path {
+  stroke: var(--pp-blue) !important;
+  fill:   var(--pp-blue) !important;
+}
+
+.psc-pp-icon-red path,
+.psc-pp-icon-red svg,
+.psc-pp-icon-red .ia-icon svg path {
+  stroke: var(--pp-red) !important;
+  fill:   var(--pp-red) !important;
+}
+
+.psc-pp-icon-green path,
+.psc-pp-icon-green svg,
+.psc-pp-icon-green .ia-icon svg path {
+  stroke: var(--pp-green) !important;
+  fill:   var(--pp-green) !important;
+}
+
+.psc-pp-icon-gold path,
+.psc-pp-icon-gold svg,
+.psc-pp-icon-gold .ia-icon svg path {
+  stroke: var(--pp-gold) !important;
+  fill:   var(--pp-gold) !important;
+}
+
+.psc-pp-icon-white path,
+.psc-pp-icon-white svg,
+.psc-pp-icon-white .ia-icon svg path {
+  stroke: #ffffff !important;
+  fill:   #ffffff !important;
+}
+
+.psc-pp-icon-muted path,
+.psc-pp-icon-muted svg,
+.psc-pp-icon-muted .ia-icon svg path {
+  stroke: var(--pp-txt3) !important;
+  fill:   var(--pp-txt3) !important;
+}
+
+@keyframes pulse-dot-anim {
+  0%, 100%  { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+.psc-pp-dot-pulse,
+.psc-pp-dot-pulse .ia-icon,
+.psc-pp-dot-pulse svg,
+.psc-pp-dot-pulse path,
+.psc-pp-dot-pulse g {    
+    animation: pulse-dot-anim 2s ease-in-out infinite;    
+}
+
+/* More specific selectors to survive Perspective's runtime CSS */
+/* Add both prefixed and unprefixed versions */
+.psc-pp-spin,
+.psc-pp-spin .ia-icon,
+.psc-pp-spin svg,
+.psc-pp-spin path,
+.psc-pp-spin g {
+  animation: pp-spin 4.5s linear infinite !important;
+  transform-origin: center center !important;
+  display: block !important;
+}
+
+
+/* ── Perspective's built-in "neutral/secondary" type ── */
+/* Matches .btn-secondary: transparent, blue border */
+.ia_button--secondary,
+.ia_button--neutral {
+  background-color: transparent              !important;
+  color:            var(--pp-blue)           !important;
+  border:           1px solid var(--pp-b35)  !important;
+}
+.ia_button--secondary:hover,
+.ia_button--neutral:hover {
+  background-color: var(--pp-b10) !important;
+  opacity:          1             !important;
+}
+.ia_button--secondary .text,
+.ia_button--neutral .text { color: var(--pp-blue) !important; }
+
+
+
+
+
+/* Badge text color — in case inheritance breaks */
+.psc-pp-badge-active .ia_label .ia_labelComponent {
+    color: var(--pp-blue)  !important; 
+    font-size: 21px !important; 
+    font-weight: 500 !important; 
+    letter-spacing: .07em !important; 
+    text-transform: uppercase !important;
+}
+.psc-pp-badge-alert   .ia_label { color: var(--pp-red)   !important; font-size: 9px !important; font-weight: 500 !important; letter-spacing: .07em !important; text-transform: uppercase !important; }
+.psc-pp-badge-pending .ia_label { color: var(--pp-gold)  !important; font-size: 9px !important; font-weight: 500 !important; letter-spacing: .07em !important; text-transform: uppercase !important; }
+.psc-pp-badge-synced  .ia_label { color: var(--pp-green) !important; font-size: 9px !important; font-weight: 500 !important; letter-spacing: .07em !important; text-transform: uppercase !important; }
+.psc-pp-badge-offline .ia_label { color: var(--pp-txt3)  !important; font-size: 9px !important; font-weight: 500 !important; letter-spacing: .07em !important; text-transform: uppercase !important; }
+
+/* Pulse — using data-icon attribute for maximum specificity */
+.psc-pp-badge-active svg[data-icon="material/lens"],
+.psc-pp-badge-alert  svg[data-icon="material/lens"] {
+  animation:        pp-pulse 1.8s ease-in-out infinite !important;
+  transform-origin: center center !important;
+}
+
+.psc-pp-badge-alert svg[data-icon="material/lens"] {
+  animation-duration: 0.9s !important;
+}
+
+
+
+
+
+/* ── Text inputs ── */
+/* ── Text inputs ── */
+.ia_inputField {
+  background-color: var(--pp-bg1)  !important;
+  border:           1px solid var(--pp-bdr2) !important;
+  border-radius:    3px            !important;
+  color:            var(--pp-txt)  !important;
+  font-size:        12px           !important;
+  padding:          8px 10px       !important;
+  outline:          none           !important;
+  transition:       border-color .15s ease !important;
+}
+
+.ia_inputField:focus {
+  border-color: var(--pp-blue) !important;
+}
+
+.ia_inputField::placeholder {
+  color: var(--pp-txt3) !important;
+}
+
+/* ── Placeholder text ── */
+.ia-text-field__input::placeholder {
+  color: var(--pp-txt3) !important;
+}
+
+/* ── Field label (the Label component above an input) ── */
+/* ── Field label ── */
+/* ── Field label ── */
+.psc-field-label span {
+  font-size:      10px            !important;
+  color:          var(--pp-txt3)  !important;
+  letter-spacing: 0.07em          !important;
+  text-transform: uppercase       !important;
+  font-weight:    500             !important;
+}
+
+/* ── Required asterisk ── */
+.psc-req {
+  color:     var(--pp-red);
+  font-size: 11px;
+  margin-left: 3px;
+}
+
+/* ── Hint text below input ── */
+.psc-field-hint {
+  font-size: 10px;
+  color:     var(--pp-txt3);
+  margin-top: 4px;
+}
+
+.psc-field-success span {
+  color:      var(--pp-green)  !important;
+  font-size:  10px           !important;
+  margin-top: 4px            !important;
+}
+
+
+/* ── Field error message (red, conditionally visible) ── */
+.psc-field-error span {
+  color:      var(--pp-red)  !important;
+  font-size:  10px           !important;
+  margin-top: 4px            !important;
+}
+
+
+/* ── Input error state ── */
+.ia_inputField.psc-input--error {
+  border-color: var(--pp-red) !important;
+}
+
+/* ── Input success state (while you're at it) ── */
+.ia_inputField.psc-input--success {
+  border-color: var(--pp-green) !important;
+}
+
+
+
+
+
+/* ── Dropdowns/selects ── */
+/* ── Dropdown outer wrapper ── */
+.ia_dropdown {
+  background-color: var(--pp-bg1)  !important;
+  border:           1px solid var(--pp-bdr2) !important;
+  border-radius:    3px            !important;
+  color:            var(--pp-txt)  !important;
+  font-size:        12px           !important;
+  transition:       border-color .15s ease !important;
+}
+
+/* ── Dropdown inner container ── */
+.iaDropdownCommon_container {
+  background-color: var(--pp-bg1)  !important;
+  border:           none           !important;
+  padding:          8px 10px       !important;
+  min-height:       unset          !important;
+}
+
+/* ── Placeholder text ── */
+.ia_dropdown__placeholder {
+  color:     var(--pp-txt3) !important;
+  font-size: 12px           !important;
+}
+
+/* ── Selected value text ── */
+.iaDropdownCommon_container:not(.iaDropdownCommon_placeholder-container) {
+  color: var(--pp-txt) !important;
+}
+
+/* ── Search input inside dropdown ── */
+.ia_dropdown__search {
+  background-color: transparent !important;
+  color:            var(--pp-txt) !important;
+  font-size:        12px          !important;
+  border:           none          !important;
+  outline:          none          !important;
+}
+
+/* ── Chevron icon ── */
+.ia_dropdown__expandIcon {
+  fill:   var(--pp-txt3) !important;
+  width:  16px           !important;
+  height: 16px           !important;
+}
+
+/* ── Focus state ── */
+.ia_dropdown:focus-within {
+  border-color: var(--pp-blue) !important;
+}
+
+/* ── Error state ── */
+.ia_dropdown.psc-input--error {
+  border-color: var(--pp-red) !important;
+}
+
+/* ── Dropdown popup list ── */
+.iaDropdownCommon_popup {
+  background-color: var(--pp-bg1)  !important;
+  border:           1px solid var(--pp-bdr2) !important;
+  border-radius:    3px            !important;
+  border-top:       none           !important;
+}
+
+/* ── Dropdown option items ── */
+.iaDropdownCommon_option {
+  color:     var(--pp-txt2) !important;
+  font-size: 12px           !important;  
+  background-color: var(--pp-bg1) !important;  
+  padding:          10px 12px      !important;  
+}
+
+/* ── Option hover ── */
+.iaDropdownCommon_option:hover,
+.iaDropdownCommon_option:focus {
+  background-color: var(--pp-b10)  !important;
+  color:            var(--pp-txt)  !important;
+}
+
+/* ── Option selected ── */
+.iaDropdownCommon_option--selected {
+  background-color: var(--pp-b10)  !important;
+  color:            var(--pp-blue) !important;
+}
+/* ── Dropdown popup modal container ── */
+.ia_dropdown__optionsModal,
+.ia_dropdown__optionsModal > div {
+  background-color: var(--pp-bg1)  !important;
+  border:           1px solid var(--pp-blue) !important;
+  border-radius:    0 0 3px 3px    !important;
+  box-shadow:       0 8px 24px rgba(0,0,0,0.4) !important;
+  margin-top:  -1px              !important;
+  border-top:  1px solid var(--pp-bdr2) !important;  
+}
+
+/* ── Options list wrapper ── */
+.iaDropdownCommon_options {
+  background-color: var(--pp-bg1) !important;
+  padding:          4px 0         !important;
+}
+
+/* ── Individual option item ── */
+.iaDropdownCommon_option {
+  color:      var(--pp-txt2) !important;
+  font-size:  12px           !important;
+  cursor:     pointer        !important;
+  display:    block          !important;
+  text-decoration: none      !important;
+  transition: background-color .1s ease !important;
+  padding: 10px 12px !important;
+}
+
+/* ── Option hover ── */
+.iaDropdownCommon_option:hover {
+  background-color: var(--pp-b10)  !important;
+  color:            var(--pp-txt)  !important;
+}
+
+/* ── Option selected ── */
+.iaDropdownCommon_option.iaDropdownCommon_selected,
+.iaDropdownCommon_option[aria-selected="true"] {
+  background-color: var(--pp-b10)  !important;
+  color:            var(--pp-blue) !important;
+}
+
+/* ── No results message ── */
+.ia_dropdown__option__noResults {
+  color:       var(--pp-txt3) !important;
+  font-size:   11px           !important;
+  font-style:  italic         !important;
+  cursor:      default        !important;
+  pointer-events: none        !important;
+}
+
+/* ── Divider between options ── */
+.iaDropdownCommon_option + .iaDropdownCommon_option {
+  border-top: 1px solid var(--pp-bdr) !important;
+}
+
+/* ── Kill any Ignition default focus/active highlight ── */
+.iaDropdownCommon_option:active,
+.iaDropdownCommon_option.iaDropdownCommon_focused {
+  background-color: var(--pp-b10) !important;
+  color:            var(--pp-txt)             !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CUSTOM .psc- STYLE CLASSES
+   Copy class names (without .psc-) into component style > classes
+   ══════════════════════════════════════════════════════════════ */
+
+
+/* ── BACKGROUNDS ─────────────────────────────────────────────
+   classes: pp-bg-0 / pp-bg-1 / pp-bg-2 / pp-bg-3
+────────────────────────────────────────────────────────────── */
+.psc-pp-bg-0 { background-color: var(--pp-bg0) !important; }
+.psc-pp-bg-1 { background-color: var(--pp-bg1) !important; }
+.psc-pp-bg-2 { background-color: var(--pp-bg2) !important; }
+.psc-pp-bg-3 { background-color: var(--pp-bg3) !important; }
+
+/* Tron grid overlay — classes: pp-grid */
+.psc-pp-grid {
+  background-image:
+    linear-gradient(rgba(74,144,226,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,144,226,.055) 1px, transparent 1px) !important;
+  background-size: 28px 28px !important;
+}
+
+
+/* ── BUTTONS ──────────────────────────────────────────────────
+   We target both:
+     .psc-pp-btn-X .ia-button   → class on wrapper parent div
+     .psc-pp-btn-X.ia-button    → class directly on button element
+   Both selectors needed for all Perspective versions.
+────────────────────────────────────────────────────────────── */
+
+/* Primary — background:var(--red); color:#fff */
+.psc-pp-btn-primary .ia-button,
+.psc-pp-btn-primary.ia-button {
+  background-color: var(--pp-blue) !important;
+  color:            #fff           !important;
+  border:           none           !important;
+  border-radius:    2px            !important;
+  font-size:        12px           !important;
+  font-weight:      500            !important;
+  letter-spacing:   .05em          !important;
+  padding:          8px 16px       !important;
+}
+
+.psc-pp-btn-primary .ia-button:hover,
+.psc-pp-btn-primary.ia-button:hover {
+  background-color: var(--pp-blue-hover) !important;
+  opacity:          1             !important;
+}
+
+.psc-pp-btn-primary .ia-button .text,
+.psc-pp-btn-primary.ia-button .text {
+  color: #fff !important;
+}
+
+/* Secondary — transparent; color:var(--blue); border:1px solid var(--b35) */
+.psc-pp-btn-secondary .ia-button,
+.psc-pp-btn-secondary.ia-button {
+  background-color: transparent             !important;
+  color:            var(--pp-blue)          !important;
+  border:           1px solid var(--pp-b35) !important;
+  border-radius:    2px                     !important;
+  font-size:        12px                    !important;
+  font-weight:      500                     !important;
+  letter-spacing:   .05em                   !important;
+  padding:          8px 16px                !important;
+}
+.psc-pp-btn-secondary .ia-button:hover,
+.psc-pp-btn-secondary.ia-button:hover {
+  background-color: var(--pp-b10) !important;
+  opacity: 1 !important;
+}
+.psc-pp-btn-secondary .ia-button .text,
+.psc-pp-btn-secondary.ia-button .text {
+  color: var(--pp-blue) !important;
+}
+
+/* Ghost — transparent; color:var(--txt2); border:1px solid var(--bdr) */
+.psc-pp-btn-ghost .ia-button,
+.psc-pp-btn-ghost.ia-button {
+  background-color: transparent              !important;
+  color:            var(--pp-txt2)           !important;
+  border:           1px solid var(--pp-bdr)  !important;
+  border-radius:    5px                      !important;
+  font-size:        12px                     !important;
+  font-weight:      500                      !important;
+  letter-spacing:   .05em                    !important;
+  padding:          8px 16px                 !important;
+}
+.psc-pp-btn-ghost .ia-button:hover,
+.psc-pp-btn-ghost.ia-button:hover {
+  opacity: 1 !important;
+  background-color: var(--pp-b10) !important;
+  color: var(--pp-txt) !important;
+}
+.psc-pp-btn-ghost .ia-button .text,
+.psc-pp-btn-ghost.ia-button .text {
+  color: var(--pp-txt2) !important;
+}
+
+/* Danger — transparent; color:var(--red); border:1px solid var(--r35) */
+.psc-pp-btn-danger .ia-button,
+.psc-pp-btn-danger.ia-button {
+  background-color: transparent             !important;
+  color:            var(--pp-red)           !important;
+  border:           1px solid var(--pp-r35) !important;
+  border-radius:    2px                     !important;
+  font-size:        12px                    !important;
+  font-weight:      500                     !important;
+  letter-spacing:   .05em                   !important;
+  padding:          8px 16px                !important;
+}
+.psc-pp-btn-danger .ia-button:hover,
+.psc-pp-btn-danger.ia-button:hover {
+  background-color: var(--pp-r10) !important;
+  opacity: 1 !important;
+}
+.psc-pp-btn-danger .ia-button .text,
+.psc-pp-btn-danger.ia-button .text {
+  color: var(--pp-red) !important;
+}
+
+/* Success — transparent; color:var(--green); border:1px solid var(--g25) */
+.psc-pp-btn-success .ia-button,
+.psc-pp-btn-success.ia-button {
+  background-color: transparent             !important;
+  color:            var(--pp-green)         !important;
+  border:           1px solid var(--pp-g25) !important;
+  border-radius:    2px                     !important;
+  font-size:        12px                    !important;
+  font-weight:      500                     !important;
+  letter-spacing:   .05em                   !important;
+  padding:          8px 16px                !important;
+}
+.psc-pp-btn-success .ia-button:hover,
+.psc-pp-btn-success.ia-button:hover {
+  background-color: var(--pp-g10) !important;
+  opacity: 1 !important;
+}
+.psc-pp-btn-success .ia-button .text,
+.psc-pp-btn-success.ia-button .text {
+  color: var(--pp-green) !important;
+}
+
+/* Gold — transparent; color:var(--gold); border:1px solid var(--gold25) */
+.psc-pp-btn-gold .ia-button,
+.psc-pp-btn-gold.ia-button {
+  background-color: transparent               !important;
+  color:            var(--pp-gold)            !important;
+  border:           1px solid var(--pp-gold25)!important;
+  border-radius:    2px                       !important;
+  font-size:        12px                      !important;
+  font-weight:      500                       !important;
+  letter-spacing:   .05em                     !important;
+  padding:          8px 16px                  !important;
+}
+.psc-pp-btn-gold .ia-button:hover,
+.psc-pp-btn-gold.ia-button:hover {
+  background-color: var(--pp-gold10) !important;
+  opacity: 1 !important;
+}
+.psc-pp-btn-gold .ia-button .text,
+.psc-pp-btn-gold.ia-button .text {
+  color: var(--pp-gold) !important;
+}
+
+/* Small — padding:5px 10px; font-size:11px */
+.psc-pp-btn-sm .ia-button,
+.psc-pp-btn-sm.ia-button {
+  padding:   5px 10px !important;
+  font-size: 11px     !important;
+}
+.psc-pp-btn-sm .ia-button .text { font-size: 11px !important; }
+
+/* Large — padding:11px 22px; font-size:13px */
+.psc-pp-btn-lg .ia-button,
+.psc-pp-btn-lg.ia-button {
+  padding:   11px 22px !important;
+  font-size: 13px      !important;
+}
+.psc-pp-btn-lg .ia-button .text { font-size: 13px !important; }
+
+/* Icon — padding:8px; width:34px; height:34px */
+.psc-pp-btn-icon .ia-button,
+.psc-pp-btn-icon.ia-button {
+  padding:         8px  !important;
+  width:           34px !important;
+  height:          34px !important;
+  justify-content: center !important;
+}
+
+/* Disabled — opacity:.32; cursor:not-allowed */
+.psc-pp-btn-disabled .ia-button,
+.psc-pp-btn-disabled.ia-button {
+  opacity:        .32           !important;
+  cursor:         not-allowed   !important;
+  pointer-events: none          !important;
+}
+
+
+/* ── TYPOGRAPHY ───────────────────────────────────────────────
+   classes: pp-h1 / pp-h2 / pp-h3 / pp-body / pp-caption / pp-label
+────────────────────────────────────────────────────────────── */
+/* H1 — 26px / 500 / #fff / line-height:1.2 */
+.psc-pp-h1 {
+  font-size:   26px  !important;
+  font-weight: 500   !important;
+  color:       var(--pp-heading)  !important;
+  line-height: 1.2   !important;
+  letter-spacing: .12em !important;
+}
+/* H2 — 20px / 500 / #fff / line-height:1.3 */
+.psc-pp-h2 {
+  font-size:   16px  !important;
+  font-weight: 500   !important;
+  color:       var(--pp-heading)  !important;
+  line-height: 1.3   !important;
+  letter-spacing: .12em !important;
+}
+/* H3 — 15px / 500 / #fff */
+.psc-pp-h3 {
+  font-size:   14px  !important;
+  font-weight: 500   !important;
+  color:       var(--pp-heading)  !important;
+  letter-spacing: .12em !important;
+}
+/* Body — 12px / 400 / txt2 / line-height:1.7 */
+.psc-pp-body {
+  font-size:   12px           !important;
+  font-weight: 400            !important;
+  color:       var(--pp-txt2) !important;
+  line-height: 1.7            !important;
+}
+/* Caption — 10px / 400 / txt3 / letter-spacing:.04em */
+.psc-pp-caption {
+  font-size:      10px           !important;
+  font-weight:    400            !important;
+  color:          var(--pp-txt3) !important;
+  letter-spacing: .04em          !important;
+}
+/* Label — 9px / 500 / blue / uppercase / letter-spacing:.12em */
+.psc-pp-label {
+  font-size:      9px            !important;
+  font-weight:    500            !important;
+  color:          var(--pp-blue) !important;
+  letter-spacing: .12em          !important;
+  text-transform: uppercase      !important;
+}
+
+.psc-pp-label-green {
+  font-size:      9px            !important;
+  font-weight:    500            !important;
+  color:          var(--pp-green) !important;
+  letter-spacing: .12em          !important;
+  text-transform: uppercase      !important;
+}
+
+.psc-pp-label-red {
+  font-size:      9px            !important;
+  font-weight:    500            !important;
+  color:          var(--pp-red) !important;
+  letter-spacing: .12em          !important;
+  text-transform: uppercase      !important;
+}
+
+.psc-pp-label-gold {
+  font-size:      9px            !important;
+  font-weight:    500            !important;
+  color:          var(--pp-gold) !important;
+  letter-spacing: .12em          !important;
+  text-transform: uppercase      !important;
+}
+
+.psc-pp-label-default {
+  font-size:      14px            !important;
+  font-weight:    500            !important;
+  color:          var(--pp-default) !important;
+  letter-spacing: .12em          !important;
+  text-transform: uppercase      !important;
+}
+
+.psc-pp-label-default-sm {
+  font-size:      9px            !important;
+  font-weight:    500            !important;
+  color:          var(--pp-default) !important;
+  letter-spacing: .12em          !important;
+  text-transform: uppercase      !important;
+}
+
+/* Text color utilities */
+.psc-pp-txt-blue  { color: var(--pp-blue)  !important; }
+.psc-pp-txt-red   { color: var(--pp-red)   !important; }
+.psc-pp-txt-gold  { color: var(--pp-gold)  !important; }
+.psc-pp-txt-green { color: var(--pp-green) !important; }
+.psc-pp-txt-muted { color: var(--pp-txt3)  !important; }
+.psc-pp-txt-body  { color: var(--pp-txt2)  !important; }
+.psc-pp-txt-white { color: #ffffff         !important; }
+
+/* HUD big number — 28px / 500 / #fff / line-height:1 */
+.psc-pp-hud-big       { font-size:28px !important; font-weight:500 !important; color:var(--pp-heading)           !important; line-height:1 !important; }
+.psc-pp-hud-big-blue  { font-size:28px !important; font-weight:500 !important; color:var(--pp-blue) !important; line-height:1 !important; }
+.psc-pp-hud-big-green { font-size:28px !important; font-weight:500 !important; color:var(--pp-green)!important; line-height:1 !important; }
+.psc-pp-hud-big-gold  { font-size:28px !important; font-weight:500 !important; color:var(--pp-gold) !important; line-height:1 !important; }
+.psc-pp-hud-big-red   { font-size:28px !important; font-weight:500 !important; color:var(--pp-red)  !important; line-height:1 !important; }
+
+/* HUD sub — 10px / txt3 */
+.psc-pp-hud-sub { font-size:10px !important; color:var(--pp-txt3) !important; margin-top:3px !important; }
+
+
+/* ── SECTION SLAB ─────────────────────────────────────────────
+   The section header row with number tag + label + line
+   classes: pp-slab / pp-slab-tag / pp-slab-line
+────────────────────────────────────────────────────────────── */
+/* .slab: padding:10px 20px; bg:bg0; border-top+bottom:1px solid bdr */
+.psc-pp-slab {
+  padding:          10px 20px            !important;
+  background-color: var(--pp-bg0)        !important;
+  border-bottom:    1px solid var(--pp-bdr) !important;
+  border-top:       1px solid var(--pp-bdr) !important;
+}
+/* .slab-tag: 9px / blue / letter-spacing:.14em / uppercase / border:1px solid b35 / padding:2px 8px / border-radius:1px */
+.psc-pp-slab-tag {
+  font-size:        9px                  !important;
+  color:            var(--pp-blue)       !important;
+  letter-spacing:   .14em               !important;
+  text-transform:   uppercase            !important;
+  border:           1px solid var(--pp-b35) !important;
+  padding:          2px 8px             !important;
+  border-radius:    1px                 !important;
+  background-color: transparent         !important;
+}
+/* .slab-line: flex:1; height:1px; background:bdr */
+.psc-pp-slab-line {
+  height:           1px                !important;
+  background-color: var(--pp-bdr)      !important;
+}
+
+
+/* ── BADGES ───────────────────────────────────────────────────
+   .badge: 9px / 500 / padding:2px 7px / border-radius:1px / uppercase / letter-spacing:.07em
+   classes: pp-badge-active / pp-badge-alert / pp-badge-pending /
+            pp-badge-synced / pp-badge-offline /
+            pp-badge-herbicide / pp-badge-fungicide /
+            pp-badge-insecticide / pp-badge-new
+────────────────────────────────────────────────────────────── */
+.psc-pp-badge-active {
+  font-size:        9px                       !important;
+  font-weight:      500                       !important;
+  padding:          2px 7px                   !important;
+  border-radius:    1px                       !important;
+  letter-spacing:   .07em                     !important;
+  text-transform:   uppercase                  !important;
+  background-color: var(--pp-b10)             !important;
+  color:            var(--pp-blue)            !important;
+  border:           1px solid var(--pp-b35)   !important;
+}
+.psc-pp-badge-alert {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.07em !important; text-transform:uppercase !important;
+  background-color:var(--pp-r10) !important; color:var(--pp-red) !important;
+  border:1px solid var(--pp-r35) !important;
+}
+.psc-pp-badge-pending {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.07em !important; text-transform:uppercase !important;
+  background-color:var(--pp-gold10) !important; color:var(--pp-gold) !important;
+  border:1px solid var(--pp-gold25) !important;
+}
+.psc-pp-badge-synced {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.07em !important; text-transform:uppercase !important;
+  background-color:var(--pp-g10) !important; color:var(--pp-green) !important;
+  border:1px solid var(--pp-g25) !important;
+}
+.psc-pp-badge-offline {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.07em !important; text-transform:uppercase !important;
+  background-color:rgba(74,144,226,.08) !important; color:var(--pp-txt3) !important;
+  border:1px solid var(--pp-bdr) !important;
+}
+.psc-pp-badge-herbicide {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.06em !important; text-transform:uppercase !important;
+  background-color:var(--pp-b10) !important; color:var(--pp-blue) !important;
+  border:1px solid var(--pp-b35) !important;
+}
+.psc-pp-badge-fungicide {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.06em !important; text-transform:uppercase !important;
+  background-color:var(--pp-r10) !important; color:var(--pp-red) !important;
+  border:1px solid var(--pp-r35) !important;
+}
+.psc-pp-badge-insecticide {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.06em !important; text-transform:uppercase !important;
+  background-color:var(--pp-g10) !important; color:var(--pp-green) !important;
+  border:1px solid var(--pp-g25) !important;
+}
+.psc-pp-badge-new {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.06em !important; text-transform:uppercase !important;
+  background-color:var(--pp-gold10) !important; color:var(--pp-gold) !important;
+  border:1px solid var(--pp-gold25) !important;
+}
+
+.psc-pp-badge-blue {
+  font-size:        9px                       !important;
+  font-weight:      500                       !important;
+  padding:          2px 7px                   !important;
+  border-radius:    1px                       !important;
+  letter-spacing:   .07em                     !important;
+  text-transform:   uppercase                 !important;
+  background-color: var(--pp-b10)             !important;
+  color:            var(--pp-blue)            !important;
+  border:           1px solid var(--pp-b35)   !important;
+}
+
+.psc-pp-badge-green {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.06em !important; text-transform:uppercase !important;
+  background-color:var(--pp-g10) !important; color:var(--pp-green) !important;
+  border:1px solid var(--pp-g25) !important;
+}
+
+.psc-pp-badge-red {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.06em !important; text-transform:uppercase !important;
+  background-color:var(--pp-r10) !important; color:var(--pp-red) !important;
+  border:1px solid var(--pp-r35) !important;
+}
+
+.psc-pp-badge-gold {
+  font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
+  border-radius:1px !important; letter-spacing:.06em !important; text-transform:uppercase !important;
+  background-color:var(--pp-g10) !important; color:var(--pp-gold) !important;
+  border:1px solid var(--pp-g25) !important;
+}
+
+
+
+
+/* Pills — border-radius:20px */
+.psc-pp-pill-blue  { font-size:10px !important; padding:3px 10px !important; border-radius:20px !important; background-color:var(--pp-b10)    !important; color:var(--pp-blue)  !important; border:1px solid var(--pp-b20)    !important; }
+.psc-pp-pill-green { font-size:10px !important; padding:3px 10px !important; border-radius:20px !important; background-color:var(--pp-g10)    !important; color:var(--pp-green) !important; border:1px solid var(--pp-g10)    !important; }
+.psc-pp-pill-gold  { font-size:10px !important; padding:3px 10px !important; border-radius:20px !important; background-color:var(--pp-gold10) !important; color:var(--pp-gold)  !important; border:1px solid var(--pp-gold10) !important; }
+.psc-pp-pill-muted { font-size:10px !important; padding:3px 10px !important; border-radius:20px !important; background-color:rgba(74,144,226,.07) !important; color:var(--pp-txt3) !important; border:1px solid var(--pp-bdr) !important; }
+
+
+/* ── CARDS ────────────────────────────────────────────────────
+   .card: bg:bg2; border:1px solid bdr; border-radius:6px
+   classes: pp-card / pp-card-top-blue / pp-card-top-red etc.
+────────────────────────────────────────────────────────────── */
+/* The moving scanline bar itself */
+.psc-pp-scanline-bar {
+  position:         absolute          !important;
+  left:             0                 !important;
+  right:            0                 !important;
+  height:           2px               !important;
+  background-color: rgba(74,144,226,0.18) !important;
+  animation:        pp-scanline 3.5s linear infinite !important;
+  pointer-events:   none              !important;
+  z-index:          999               !important;
+}
+
+/* The container holding both image and scanline */
+.psc-pp-scanline-wrap {
+  position: relative !important;
+  overflow: hidden   !important;
+}
+
+.psc-pp-card {
+  background-color: var(--pp-bg2)       !important;
+  border:           1px solid var(--pp-bdr) !important;
+  border-radius:    6px                  !important;
+  position:         relative             !important;
+  overflow:         hidden               !important;
+}
+
+/* 1px top accent strips */
+.psc-pp-card-top-blue  { border-top: 1px solid var(--pp-blue)  !important; }
+.psc-pp-card-top-red   { border-top: 1px solid var(--pp-red)   !important; }
+.psc-pp-card-top-green { border-top: 1px solid var(--pp-green) !important; }
+.psc-pp-card-top-gold  { border-top: 1px solid var(--pp-gold)  !important; }
+
+
+.psc-pp-card-top-glow {
+  background-image: linear-gradient(90deg, transparent, var(--pp-blue), transparent) !important;
+  background-size: 100% 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+  background-color: var(--pp-bg2) !important;
+}
+.psc-pp-card-top-blue-glow {
+  background-image: linear-gradient(90deg, transparent, var(--pp-blue), transparent) !important;
+  background-size: 100% 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+  background-color: var(--pp-bg2) !important;
+}
+
+.psc-pp-card-top-red-glow {
+  background-image: linear-gradient(90deg, transparent, var(--pp-red), transparent) !important;
+  background-size: 100% 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+  background-color: var(--pp-bg2) !important;
+}
+
+.psc-pp-card-top-green-glow {
+  background-image: linear-gradient(90deg, transparent, var(--pp-green), transparent) !important;
+  background-size: 100% 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+  background-color: var(--pp-bg2) !important;
+}
+
+.psc-pp-card-top-gold-glow {
+  background-image: linear-gradient(90deg, transparent, var(--pp-gold), transparent) !important;
+  background-size: 100% 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+  background-color: var(--pp-bg2) !important;
+}
+
+.psc-pp-card-top-red-blue-glow {
+  background-image: linear-gradient(90deg, var(--pp-red), var(--pp-blue)) !important;
+  background-size: 100% 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+  background-color: var(--pp-bg2) !important;
+}
+
+
+
+
+
+
+/* Card body padding */
+.psc-pp-card-body { padding: 14px !important; }
+
+/* Card image area — grid bg + centered */
+.psc-pp-card-img {
+  height:           72px   !important;
+  display:          flex    !important;
+  align-items:      center  !important;
+  justify-content:  center  !important;
+  background-image: linear-gradient(rgba(74,144,226,.15) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(74,144,226,.15) 1px,transparent 1px) !important;
+  background-size:  14px 14px !important;
+}
+
+/* Card tag — 9px / blue / border:1px solid b20 / padding:2px 6px / border-radius:1px */
+.psc-pp-card-tag {
+  font-size:        9px                      !important;
+  color:            var(--pp-blue)           !important;
+  border:           1px solid var(--pp-b20)  !important;
+  padding:          2px 6px                  !important;
+  border-radius:    1px                      !important;
+  letter-spacing:   .06em                    !important;
+  text-transform:   uppercase                !important;
+  margin-bottom:    6px                      !important;
+  background-color: transparent              !important;
+}
+
+/* Card title — 13px / 500 / #fff */
+.psc-pp-card-title {
+  font-size:   13px  !important;
+  font-weight: 500   !important;
+  color:       var(--pp-heading)  !important;
+  margin-bottom: 3px !important;
+}
+
+/* Card subtitle — 11px / txt2 / line-height:1.6 */
+.psc-pp-card-sub {
+  font-size:   11px           !important;
+  color:       var(--pp-txt2) !important;
+  line-height: 1.6            !important;
+  margin-bottom: 8px          !important;
+}
+
+/* Alert card — bg:r10; border:1px solid r20; border-radius:4px */
+.psc-pp-card-alert {
+  background-color: var(--pp-r10)       !important;
+  border:           1px solid var(--pp-r20) !important;
+  border-radius:    4px                  !important;
+  padding:          12px 14px            !important;
+}
+
+/* Stat card — bg:bg1; border:bdr; border-radius:6px */
+.psc-pp-card-stat {
+  background-color: var(--pp-bg1)       !important;
+  border:           1px solid var(--pp-bdr) !important;
+  border-radius:    6px                  !important;
+  padding:          14px 16px            !important;
+}
+
+/* ── CARD FOOTER ── */
+.psc-pp-card-foot {
+  display:         flex            !important;
+  justify-content: space-between   !important;
+  align-items:     center          !important;
+}
+
+/* ── CAPTION ── */
+.psc-pp-caption .ia_labelComponent span {
+  font-size:      10px           !important;
+  font-weight:    400            !important;
+  color:          var(--pp-txt3) !important;
+  letter-spacing: .04em          !important;
+}
+
+/* ── LINK ── */
+.psc-pp-link .ia_labelComponent span {
+  color:           var(--pp-blue) !important;
+  font-size:       12px           !important;
+  text-decoration: none           !important;
+  cursor:          pointer        !important;
+}
+
+.psc-pp-link:hover .ia_labelComponent span {
+  text-decoration:       underline !important;
+  text-underline-offset: 3px       !important;
+}
+
+/* ── LINK RED ── */
+.psc-pp-link-red .ia_labelComponent span {
+  color:           var(--pp-red) !important;
+  font-size:       12px          !important;
+  text-decoration: none          !important;
+  cursor:          pointer       !important;
+}
+
+/* ── LINK MUTED ── */
+.psc-pp-link-muted .ia_labelComponent span {
+  color:           var(--pp-txt3) !important;
+  font-size:       12px           !important;
+  text-decoration: none           !important;
+  cursor:          pointer        !important;
+}
+
+.psc-pp-link-muted:hover .ia_labelComponent span {
+  color: var(--pp-blue) !important;
+}
+
+
+
+
+
+
+
+
+
+
+/* HUD panel — bg:bg2; border:bdr; radius:6px; gradient top beam */
+/* ── HUD PANEL BASE ── */
+.psc-pp-hud-panel {
+  background-color: var(--pp-bg2)           !important;
+  border:           1px solid var(--pp-bdr) !important;
+  border-radius:    6px                     !important;
+  padding:          14px                    !important;
+  position:         relative                !important;
+  overflow:         hidden                  !important;
+}
+
+/* ── HUD TOP ACCENT STRIPS ── */
+/* Same pattern as pp-card-top-blue etc. */
+.psc-pp-hud-top-blue {
+  border-top: 1px solid var(--pp-blue) !important;
+}
+
+.psc-pp-hud-top-red {
+  border-top: 1px solid var(--pp-red) !important;
+}
+
+.psc-pp-hud-top-green {
+  border-top: 1px solid var(--pp-green) !important;
+}
+
+.psc-pp-hud-top-gold {
+  border-top: 1px solid var(--pp-gold) !important;
+}
+
+/* Gradient beam — red to blue */
+.psc-pp-hud-top-gradient {
+  border-top: 1px solid transparent        !important;
+  background-image:
+    linear-gradient(var(--pp-bg2), var(--pp-bg2)),
+    linear-gradient(90deg, var(--pp-red), var(--pp-blue)) !important;
+  background-origin: border-box            !important;
+  background-clip:   padding-box, border-box !important;
+}
+
+/* HUD title */
+/* Maximum specificity — targets this exact structure */
+div.psc-pp-hud-title.ia_labelComponent span,
+div.psc-pp-hud-title span,
+.psc-pp-hud-title.ia_labelComponent > span,
+.psc-pp-hud-title > span {
+  font-size: 11px !important;
+  font-weight:    500            !important;
+/*  color: var(--pp-blue) !important;*/
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 8px !important; 
+}
+
+div.psc-pp-hud-metric.ia_labelComponent span,
+div.psc-pp-hud-metric span,
+.psc-pp-hud-metric.ia_labelComponent > span,
+.psc-pp-hud-metric > span {
+/*  font-size:      24px            !important;*/
+/*  font-weight:    500            !important;*/
+/*  text-transform: uppercase      !important;*/
+
+  font-size: 26px !important;
+  font-weight: 500 !important;
+  color: var(--pp-hud-metric-color) !important;
+  line-height: 1 !important;
+  letter-spacing: -0.01em !important;
+}
+
+
+/* HUD sub text */
+div.psc-pp-hud-sub.ia_labelComponent span,
+div.psc-pp-hud-sub span,
+.psc-pp-hud-sub.ia_labelComponent > span,
+.psc-pp-hud-sub > span {
+  font-size: 12px !important;
+  color:     var(--pp-txt2) !important;
+  margin-top: 4px !important;  
+}
+
+div.psc-pp-hud-metric-unit.ia_labelComponent span,
+div.psc-pp-hud-metric-unit span,
+.psc-pp-hud-metric-unit.ia_labelComponent > span,
+.psc-pp-hud-metric-unit > span {
+  font-size: 12px !important;
+  color:     var(--pp-txt2) !important;
+  margin-top: 4px !important;  
+}
+
+
+
+
+
+
+
+
+/* HUD big numbers */
+.psc-pp-hud-big-blue .ia_labelComponent span {
+  font-size:   28px            !important;
+  font-weight: 500             !important;
+  color:       var(--pp-blue)  !important;
+  line-height: 1               !important;
+}
+
+.psc-pp-hud-big-green .ia_labelComponent span {
+  font-size:   28px            !important;
+  font-weight: 500             !important;
+  color:       var(--pp-green) !important;
+  line-height: 1               !important;
+}
+
+.psc-pp-hud-big-gold .ia_labelComponent span {
+  font-size:   28px           !important;
+  font-weight: 500            !important;
+  color:       var(--pp-gold) !important;
+  line-height: 1              !important;
+}
+
+.psc-pp-hud-big-red .ia_labelComponent span {
+  font-size:   28px          !important;
+  font-weight: 500           !important;
+  color:       var(--pp-red) !important;
+  line-height: 1             !important;
+}
+
+.psc-pp-hud-bar-container {
+    padding: 8px !important;
+    margin: 0px 8px !important;
+}
+
+.psc-pp-hud-bar-track {
+    flex-grow: 1 !important;
+    background-color: var(--pp-hud-bar-track-bg-col) !important;
+    border: 1px solid var(--pp-hud-bar-track-border-col) !important;
+    border-radius: 2px !important;
+    overflow: hidden !important;
+}
+
+.psc-pp-hud-bar-fill-light-blue {        
+    background-color: var(--pp-hud-bar-fill-light-bg-col);    
+    padding-left: 5px;    
+}
+
+.psc-pp-hud-bar-fill-medium-blue {        
+    background-color: var(--pp-hud-bar-fill-medium-bg-col);    
+    padding-left: 5px;    
+}
+
+.psc-pp-hud-bar-fill-dark-blue {        
+    background-color: var(--pp-hud-bar-fill-dark-bg-col);    
+    padding-left: 5px;    
+}
+
+.psc-pp-hud-bar-label-blue {        
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--pp-blue);    
+    white-space: nowrap;    
+}
+
+.psc-pp-hud-bar-label-white {        
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--pp-white);    
+    white-space: nowrap;    
+}
+
+
+
+
+
+
+/* Mini bar track */
+.psc-pp-mini-bar-track {
+  height:           3px           !important;
+  background-color: var(--pp-b10) !important;
+  border-radius:    2px           !important;
+  overflow:         hidden        !important;
+}
+
+/* Mini bar fills */
+.psc-pp-mini-bar-blue  { background-color: var(--pp-blue)  !important; height: 100% !important; border-radius: 2px !important; }
+.psc-pp-mini-bar-green { background-color: var(--pp-green) !important; height: 100% !important; border-radius: 2px !important; }
+.psc-pp-mini-bar-gold  { background-color: var(--pp-gold)  !important; height: 100% !important; border-radius: 2px !important; }
+.psc-pp-mini-bar-red   { background-color: var(--pp-red)   !important; height: 100% !important; border-radius: 2px !important; }
+
+
+
+
+
+/* ── NAVIGATION ───────────────────────────────────────────────
+   classes: pp-nav-bar / pp-fmc-badge / pp-nav-name /
+            pp-nav-item / pp-nav-item-active /
+            pp-breadcrumb / pp-bc-item / pp-bc-current /
+            pp-tab-bar / pp-tab / pp-tab-active /
+            pp-sidebar / pp-sidebar-item / pp-sidebar-item-active
+────────────────────────────────────────────────────────────── */
+
+/* .nav-bar: bg:#020810; border-bottom:1px solid rgba(74,144,226,.12); height:46px */
+.psc-pp-nav-bar {
+  background-color: var(--pp-bg0)                  !important;
+  border:    1px solid rgba(74,144,226,.12)  !important;
+  height:           46px                            !important;
+  padding:          0px 16px                          !important;
+  position:         relative                        !important;
+  overflow:         hidden                          !important;
+}
+
+/* Scanline animation on nav bar */
+.psc-pp-nav-scan {
+  position:   absolute                          !important;
+  left:       0                                 !important;
+  right:      0                                 !important;
+  height:     1px                               !important;
+  background: rgba(74,144,226,.15)              !important;
+  animation:  pp-scanline 4s linear infinite    !important;
+  pointer-events: none                          !important;
+}
+
+/* .fmc-badge: bg:red; color:#fff; 9px/500; padding:2px 6px; border-radius:1px */
+.psc-pp-fmc-badge {
+  color:            #fff          !important;
+  background-color: var(--pp-red) !important;
+  border-radius:    1px           !important;
+  font-weight:      500           !important;
+  font-size:        9px           !important;
+  padding:          2px 6px       !important;
+  align-self:       center        !important;
+  height:           auto          !important;
+  width:            auto          !important;
+  flex-shrink:      0             !important;    
+  letter-spacing:   .08em         !important;
+}
+
+/* .nav-name: color:#fff; 13px/500; letter-spacing:.03em */
+.psc-pp-nav-name {
+  color:          var(--pp-heading)   !important;
+  font-size:      13px   !important;
+  font-weight:    500    !important;
+  letter-spacing: .03em  !important;
+}
+.psc-pp-nav-name-accent { color: var(--pp-blue) !important; }
+
+/* .nav-item: 11px / txt3 / uppercase / letter-spacing:.05em / height:46px / border-bottom:2px solid transparent */
+.psc-pp-nav-item {
+  padding:        0 12px              !important;
+  height:         46px                !important;
+  font-size:      11px                !important;
+  color:          var(--pp-txt3)      !important;
+  text-decoration:none                !important;
+  letter-spacing: .05em               !important;
+  text-transform: uppercase           !important;
+  border-bottom:  2px solid transparent !important;
+  cursor:        pointer           !important;
+  text-align: center !important;
+}
+.psc-pp-nav-item:hover { color: var(--pp-txt2) !important; }
+
+/* .nav-item.active: color:blue; border-bottom-color:blue */
+.psc-pp-nav-item-active {
+  padding:        0 12px           !important;
+  height:         46px             !important;
+  font-size:     11px             !important;
+  color:          var(--pp-blue)   !important;
+  text-decoration:none             !important;
+  letter-spacing: .05em            !important;
+  text-transform: uppercase        !important;
+  border-bottom:  3px solid var(--pp-blue) !important;
+  cursor:        pointer           !important;
+  text-align: center !important;
+}
+
+/* .breadcrumb: flex; gap:6px; padding:8px 14px; 11px; bg:bg1; border-bottom:1px solid bdr */
+.psc-pp-breadcrumb {
+  display:          flex                    !important;
+  align-items:      center                  !important;
+  gap:              6px                     !important;
+  padding:          8px 14px               !important;
+  font-size:        11px                   !important;
+  background-color: var(--pp-bg1)          !important;
+  border-bottom:    1px solid var(--pp-bdr)!important;
+}
+.psc-pp-bc-item    { color: var(--pp-txt3) !important; font-size:11px !important; }
+.psc-pp-bc-sep     { color: var(--pp-txt3) !important; font-size:9px  !important; }
+.psc-pp-bc-current { color: var(--pp-blue) !important; font-size:11px !important; }
+
+
+
+/* ── CUSTOM TAB BAR ── */
+.psc-pp-tab-bar {
+  background-color: var(--pp-bg1)           !important;
+  border-bottom:    1px solid var(--pp-bdr) !important;
+  overflow:         hidden                  !important;
+}
+
+/* ── INACTIVE TAB ── */
+.psc-pp-tab {
+  color:          var(--pp-txt2) !important;
+  font-size: 12px !important;
+  height:        38px                  !important;
+  padding:       0 14px                !important;
+  border-bottom: 2px solid transparent !important;
+  border-top:    none                  !important;
+  border-left:   none                  !important;
+  border-right:  none                  !important;
+  cursor:        pointer               !important;
+  background:    transparent           !important;
+}
+
+.psc-pp-tab .ia_labelComponent span {
+/*  color:          var(--pp-txt2) !important;*/
+  font-size:      12px           !important;
+  font-weight:    400            !important;
+  letter-spacing: .05em          !important;
+  text-transform: uppercase      !important;
+}
+
+.psc-pp-tab:hover {
+  color: var(--pp-blue) !important;
+}
+
+/* ── ACTIVE TAB ── */
+.psc-pp-tab-active {
+  color: var(--pp-blue) !important;
+  font-size: 12px !important;
+  height:           38px                       !important;
+  padding:          0 14px                     !important;
+  border-bottom:    2px solid var(--pp-blue)   !important;
+  border-top:       none                       !important;
+  border-left:      none                       !important;
+  border-right:     none                       !important;
+  cursor:           pointer                    !important;
+  background-color: rgba(74,144,226,.05)       !important;
+}
+
+.psc-pp-tab-active .ia_labelComponent span {
+  color:          var(--pp-blue) !important;
+  font-size:      12px           !important;
+  font-weight:    400            !important;
+  letter-spacing: .05em          !important;
+  text-transform: uppercase      !important;
+}
+
+/* ── TAB CONTENT AREA ── */
+.psc-pp-tab-content {
+  background-color: var(--pp-bg1) !important;
+  border:           none          !important;
+  overflow:         hidden        !important;
+  flex:             1             !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .sidebar: bg:bg0; border-right:1px solid bdr */
+.psc-pp-sidebar {
+  background-color: var(--pp-bg0)          !important;
+  border-right:     1px solid var(--pp-bdr)!important;
+}
+
+/* .sidebar-item: flex; gap:7px; padding:7px 12px; 11px; txt3; border-left:2px solid transparent */
+.psc-pp-sidebar-item {
+  display:        flex              !important;
+  align-items:    center            !important;
+  gap:            7px               !important;
+  padding:        7px 12px          !important;
+  font-size:      11px              !important;
+  color:          var(--pp-txt3)    !important;
+  cursor:         pointer           !important;
+  border-left:    2px solid transparent !important;
+}
+.psc-pp-sidebar-item:hover { color: var(--pp-txt2) !important; }
+
+/* .sidebar-item.active: color:blue; border-left-color:blue; bg:b10 */
+.psc-pp-sidebar-item-active {
+  display:          flex              !important;
+  align-items:      center            !important;
+  gap:              7px               !important;
+  padding:          7px 12px          !important;
+  font-size:        11px              !important;
+  color:            var(--pp-blue)    !important;
+  cursor:           pointer           !important;
+  border-left:      2px solid var(--pp-blue) !important;
+  background-color: var(--pp-b10)    !important;
+}
+
+
+/* ── LINKS ────────────────────────────────────────────────────
+   classes: pp-link / pp-link-red / pp-link-muted
+────────────────────────────────────────────────────────────── */
+/* .link: color:blue; text-decoration:none; 12px */
+.psc-pp-link {
+  color:           var(--pp-blue) !important;
+  text-decoration: none           !important;
+  font-size:       12px           !important;
+  cursor:          pointer        !important;
+}
+.psc-pp-link:hover {
+  text-decoration:        underline !important;
+  text-underline-offset:  3px       !important;
+}
+
+/* .link-red */
+.psc-pp-link-red {
+  color:           var(--pp-red) !important;
+  text-decoration: none          !important;
+  font-size:       12px          !important;
+  cursor:          pointer       !important;
+}
+.psc-pp-link-red:hover { text-decoration: underline !important; text-underline-offset: 3px !important; }
+
+/* .link-muted: txt3 */
+.psc-pp-link-muted {
+  color:           var(--pp-txt3) !important;
+  text-decoration: none           !important;
+  font-size:       12px           !important;
+  cursor:          pointer        !important;
+}
+.psc-pp-link-muted:hover { color: var(--pp-blue) !important; }
+
+
+/* ── FORMS ────────────────────────────────────────────────────
+   classes: pp-field-label / pp-field-hint / pp-field-error /
+            pp-input / pp-input-error / pp-input-success /
+            pp-select / pp-toggle / pp-toggle-on /
+            pp-checkbox / pp-checkbox-checked
+────────────────────────────────────────────────────────────── */
+
+/* .field-label: 10px / txt3 / letter-spacing:.07em / uppercase */
+.psc-pp-field-label {
+  font-size:      10px           !important;
+  color:          var(--pp-txt3) !important;
+  letter-spacing: .07em          !important;
+  text-transform: uppercase      !important;
+  margin-bottom:  5px            !important;
+}
+
+/* .finput: bg:bg1; border:1px solid bdr2; border-radius:3px; color:txt; 12px; padding:8px 10px */
+.psc-pp-input .ia-text-field__input,
+.psc-pp-input .ia-input,
+.psc-pp-input input {
+  background-color: var(--pp-bg1)        !important;
+  border:           1px solid var(--pp-bdr2) !important;
+  border-radius:    3px                  !important;
+  color:            var(--pp-txt)        !important;
+  font-size:        12px                 !important;
+  padding:          8px 10px             !important;
+  outline:          none                 !important;
+}
+.psc-pp-input .ia-text-field__input:focus,
+.psc-pp-input input:focus {
+  border-color: var(--pp-blue) !important;
+}
+
+/* .finput.error */
+.psc-pp-input-error .ia-text-field__input,
+.psc-pp-input-error input {
+  background-color: var(--pp-bg1)  !important;
+  border:           1px solid var(--pp-red) !important;
+  border-radius:    3px            !important;
+  color:            var(--pp-txt)  !important;
+  font-size:        12px           !important;
+  padding:          8px 10px       !important;
+}
+
+/* .finput.success */
+.psc-pp-input-success .ia-text-field__input,
+.psc-pp-input-success input {
+  background-color: var(--pp-bg1)    !important;
+  border:           1px solid var(--pp-green) !important;
+  border-radius:    3px              !important;
+  color:            var(--pp-txt)    !important;
+  font-size:        12px             !important;
+  padding:          8px 10px         !important;
+}
+
+/* .field-hint: 10px / txt3 */
+.psc-pp-field-hint  { font-size:10px !important; color:var(--pp-txt3) !important; margin-top:4px !important; }
+.psc-pp-field-error { font-size:10px !important; color:var(--pp-red)  !important; margin-top:4px !important; }
+
+/* .fselect: bg:bg1; border:1px solid bdr2; border-radius:3px; color:txt; 12px; padding:8px 10px */
+.psc-pp-select,
+.psc-pp-select select {
+  background-color: var(--pp-bg1)           !important;
+  border:           1px solid var(--pp-bdr2)!important;
+  border-radius:    3px                     !important;
+  color:            var(--pp-txt)           !important;
+  font-size:        12px                    !important;
+  padding:          8px 10px                !important;
+  outline:          none                    !important;
+  appearance:       none                    !important;
+}
+.psc-pp-select:focus,
+.psc-pp-select select:focus { border-color: var(--pp-blue) !important; }
+
+
+
+
+
+/*
+ * Toggle Button
+*/
+/* ── Track ── */
+/* Track - OFF */
+/* Track - OFF */
+.psc-pp-toggle .ia_toggleSwitch__track {
+/*  background: #030c18 !important;*/
+  background: rgba(var(--pp-b10), 0) !important;
+/*  border: 1px solid rgba(74, 144, 226, 0.25) !important;*/
+  border: 1px solid var(--pp-b35) !important;
+  border-radius: 9px !important;
+  height: 16px !important;
+  transition: background 0.2s, border-color 0.2s !important;
+}
+
+/* Track - ON */
+.psc-pp-toggle .ia_toggleSwitch__track--selected {
+/*  background: rgba(74, 144, 226, 0.25) !important;*/
+  background: var(--pp-blue) !important;
+/*  border-color: rgba(74, 144, 226, 0.35) !important;*/
+  border: 1px solid var(--pp-gray) !important;
+}
+
+/* Thumb - base reset */
+.psc-pp-toggle .ia_toggleSwitch__thumb {
+  position: absolute !important;
+  width: 12px !important;
+  height: 12px !important;
+  top: -14px !important;
+  left: 3px !important;
+  border-radius: 50% !important;
+/*  background: rgba(120, 170, 220, 0.65) !important;*/
+  background: var(--pp-grey75) !important;
+  transition: background 0.2s, left 0.2s !important;
+}
+
+/* Thumb - ON */
+.psc-pp-toggle .ia_toggleSwitch__thumb--selected {
+  background: var(--pp-blue) !important;  
+  left: 19px !important;
+}
+
+/* Kill focus outline */
+.psc-pp-toggle .ia_toggleSwitch {
+  outline: none !important;
+  box-shadow: none !important;
+  caret-color: transparent !important;
+}
+
+
+
+
+
+
+
+/*
+ * Checkboxes.........
+*/
+/* ── Resize via font-size since width/height are 1em ── */
+.psc-pp-checkbox .ia_checkbox__checkedIcon,
+.psc-pp-checkbox .ia_checkbox__uncheckedIcon {
+  font-size: 20px !important;  /* controls the actual rendered size */
+  border-radius: 2px !important;
+  color: rgba(74, 144, 226, 0.25) !important;
+  transition: color 0.2s !important;
+}
+
+/* ── Checked state — full blue icon ── */
+.psc-pp-checkbox .ia_checkbox__checkedIcon {
+  color: #4A90E2 !important;
+}
+
+/* ── Text label ── */
+.psc-pp-checkbox .checkbox-input-label {
+  font-size: 12px !important;
+  color: rgba(160, 200, 255, 0.55) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* ── Kill focus outline ── */
+.psc-pp-checkbox .ia_checkbox {
+  outline: none !important;
+  box-shadow: none !important;
+  caret-color: transparent !important;
+  user-select: none !important;
+  gap: 8px !important;
+}
+
+
+/*
+ * Radio Buttons
+*/
+/* ── Unselected icon ── */
+.psc-pp-radio .ia_radio__unselectedIcon {
+  font-size: 14px !important;
+  color: rgba(74, 144, 226, 0.25) !important;
+  transition: color 0.2s !important;
+}
+
+/* ── Selected icon ── */
+.psc-pp-radio .ia_radio__selectedIcon {
+  font-size: 14px !important;
+  color: #4A90E2 !important;
+  transition: color 0.2s !important;
+}
+
+/* ── Row label text ── */
+.psc-pp-radio .ia_radioGroupComponent_text {
+  font-size: 12px !important;
+  color: rgba(160, 200, 255, 0.55) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* ── Spacing between each radio row ── */
+.psc-pp-radio .ia_radioGroupComponent_radioWrapper {
+  padding: 5px 0 !important;
+  gap: 8px !important;
+}
+
+/* ── Kill focus outline and caret ── */
+.psc-pp-radio .ia_radio {
+  outline: none !important;
+  box-shadow: none !important;
+  caret-color: transparent !important;
+  user-select: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .checkbox-lbl / .toggle-label: 12px / txt2 */
+.psc-pp-form-lbl { font-size:12px !important; color:var(--pp-txt2) !important; }
+
+/* Range value display */
+.psc-pp-range-val { font-size:11px !important; color:var(--pp-blue) !important; }
+
+
+
+/* ── DATA TABLE ────────────────────────────────────────────────
+   Native Perspective Table component approach
+   Classes: psc-pp-table / psc-pp-th / psc-pp-td /
+            psc-pp-td-active / psc-pp-td-alert / psc-pp-td-pending /
+            psc-pp-td-value / psc-pp-td-empty / psc-pp-td-last /
+            psc-pp-pg-btn / psc-pp-pg-btn-active /
+            psc-pp-pg-footer / psc-pp-pg-label
+─────────────────────────────────────────────────────────────── */
+
+.ia_table.ia_container--secondary {
+  background-color: var(--pp-bg1) !important;
+}
+
+/* Header is 15px narrower than the body to account for scrollbar width */
+/* When scrollbar is 4px wide, this gap looks off — fix it */
+.ia_table__headContainer {
+  width: calc(100% - 4px) !important;
+}
+
+/* Table wrapper — remove border-collapse, it's meaningless on div-based tables */
+.psc-pp-table {
+  width:     100% !important;
+  font-size: 11px !important;
+}
+
+/* Column headers */
+.psc-pp-th {
+  padding:          7px 10px                  !important;
+  text-align:       left                      !important;
+  color:            var(--pp-blue)            !important;
+  font-size:        9px                       !important;
+  font-weight:      500                       !important;
+  letter-spacing:   .1em                      !important;
+  text-transform:   uppercase                 !important;
+  border-bottom:    1px solid var(--pp-bdr2)  !important;
+  background-color: var(--pp-bg0)             !important;    
+}
+
+/* Standard cell */
+.psc-pp-td {
+  padding:          7px 10px                !important;
+  color:            var(--pp-txt2)          !important;
+  border-bottom:    1px solid var(--pp-bdr) !important;
+  background-color: var(pp-bg1)             !important;
+}
+
+/* Row base — now actually works via rows.style.classes */
+.psc-pp-tr {
+/*  border-bottom: 1px solid var(--pp-bdr) !important;*/
+/*  background-color: var(--pp-bg1)          !important;  */
+}
+
+/* Row hover — works via rows.highlight.style */
+.psc-pp-tr-hover {
+  background-color: var(--pp-b10) !important;
+}
+
+/* Striped even row if you want it later */
+.psc-pp-tr-even {
+  background-color: rgba(74,144,226,.03) !important;
+}
+
+/* Last row — suppress bottom border */
+.psc-pp-td-last {
+  border-bottom: none !important;
+}
+
+/* Empty / placeholder cell (shows "—") */
+.psc-pp-td-empty {
+  color: var(--pp-txt3) !important;
+}
+
+/* Status label colors */
+.psc-pp-td-active  { color: var(--pp-green) !important; font-size: 9px !important; }
+.psc-pp-td-alert   { color: var(--pp-red)   !important; font-size: 9px !important; }
+.psc-pp-td-pending { color: var(--pp-gold)  !important; font-size: 9px !important; }
+
+/* Numeric / efficacy value */
+.psc-pp-td-value { color: var(--pp-blue) !important; }
+
+/* ── PAGINATION ──────────────────────────────────────────────── */
+
+.psc-pp-pg-footer {
+  display:         flex           !important;
+  justify-content: space-between  !important;
+  align-items:     center         !important;
+  padding-top:     10px           !important;
+  border-top:      1px solid var(--pp-bdr) !important;
+  margin-top:      12px           !important;
+}
+
+.ia_table__footContainer:empty {
+  display: none !important;
+}
+
+/* Filter input */
+.ia-table-filter input,
+.ia-table-filter .ia-input {
+  background-color: var(--pp-bg2)            !important;
+  border:           1px solid var(--pp-bdr2) !important;
+  border-radius:    3px                      !important;
+  color:            var(--pp-txt)            !important;
+  font-size:        11px                     !important;
+  padding:          6px 10px                 !important;
+}
+
+/* ── PAGER PAGE SIZE DROPDOWN ───────────────────────────────── */
+
+/* Wrapper */
+.ia_pager__pageSizeChooser {
+  background-color: var(--pp-bg2)            !important;
+  border:           1px solid var(--pp-bdr2) !important;
+  border-radius:    2px                      !important;
+}
+
+/* The <select> element */
+.ia_pager__pageSizeChooser .iaSelectCommon_select,
+.ia_select__select {
+  background-color: var(--pp-bg2)  !important;
+  border:           none           !important;
+  color:            var(--pp-txt3) !important;
+  font-size:        10px           !important;
+  padding:          3px 6px        !important;
+  cursor:           pointer        !important;
+  appearance:       none           !important;
+}
+
+/* Dropdown arrow icon */
+.ia_pager__pageSizeChooser .iaSelectCommon_dropdownIcon,
+.ia_select__dropdownIcon {
+  color: var(--pp-txt3) !important;
+}
+
+/* Individual options in the dropdown */
+.ia_pager__pageSizeChooser select option {
+  background-color: var(--pp-bg2)  !important;
+  color:            var(--pp-txt2) !important;
+}
+
+/* Hover state on the whole chooser */
+.ia_pager__pageSizeChooser:hover {
+  border-color: var(--pp-blue) !important;
+}
+
+/* ── PAGER PAGE BUTTONS ─────────────────────────────────────── */
+
+/* All page number buttons */
+.ia_pager__page {
+  width:            28px                    !important;
+  height:           28px                    !important;
+  display:          flex                    !important;
+  align-items:      center                  !important;
+  justify-content:  center                  !important;
+  background-color: transparent             !important;
+  border:           1px solid var(--pp-bdr) !important;
+  border-radius:    2px                     !important;
+  color:            var(--pp-txt3)          !important;
+  font-size:        11px                    !important;
+  margin:           0 2px                   !important;
+  cursor:           pointer                 !important;
+}
+
+/* Hover state */
+.ia_pager__page:hover {
+  border-color: var(--pp-blue) !important;
+  color:        var(--pp-blue) !important;
+}
+
+/* Active / current page */
+.ia_pager__page--active,
+.ia_pager__page.active {
+  background-color: var(--pp-b10)           !important;
+  border-color:     var(--pp-blue)          !important;
+  color:            var(--pp-blue)          !important;
+}
+
+/* ── PAGER JUMP TO INPUT ─────────────────────────────────────── */
+
+.ia_pager__jump {
+  background-color: var(--pp-bg2)            !important;
+  border:           1px solid var(--pp-bdr2) !important;
+  border-radius:    2px                      !important;
+  color:            var(--pp-txt2)           !important;
+  font-size:        11px                     !important;
+  padding:          3px 6px                  !important;
+  width:            40px                     !important;
+  text-align:       center                   !important;
+}
+
+.ia_pager__jump:focus {
+  border-color: var(--pp-blue)  !important;
+  outline:      none            !important;
+}
+
+/* Hide the number input spin arrows */
+.ia_pager__jump::-webkit-inner-spin-button,
+.ia_pager__jump::-webkit-outer-spin-button {
+  appearance: none  !important;
+  margin:     0     !important;
+}
+
+.column-group.tr {
+  display: none !important;
+}
+
+
+/*
+ * Scrollbar....
+*/
+/* ── SCROLLBARS ─────────────────────────────────────────────── */
+/* Table internal virtual scroller */
+.ReactVirtualized__Grid::-webkit-scrollbar {
+  width: 4px !important;
+}
+
+.ReactVirtualized__Grid::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.ReactVirtualized__Grid::-webkit-scrollbar-thumb {
+  background:    var(--pp-bdr2) !important;
+  border-radius: 2px            !important;
+}
+
+.ReactVirtualized__Grid::-webkit-scrollbar-thumb:hover {
+  background: var(--pp-blue) !important;
+}
+
+/* Corner only on the Grid, not globally */
+.ReactVirtualized__Grid::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+
+/* Prevent horizontal scroll on the Grid only */
+.ReactVirtualized__Grid {
+  overflow-x: hidden !important;
+}
+
+/*
+ * GO NUCLEAR AND REMOVE ALL SCROLLBARS!
+*/
+/**::-webkit-scrollbar {*/
+/*  width:   0 !important;*/
+/*  display: none !important;*/
+/*}*/
+/**::-webkit-scrollbar-track {*/
+/*  display:    none !important;*/
+/*  background: transparent !important;*/
+/*}*/
+/**::-webkit-scrollbar-thumb {*/
+/*  display:    none !important;*/
+/*  background: transparent !important;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+.psc-pp-pg-label {
+  font-size: 10px           !important;
+  color:     var(--pp-txt3) !important;
+}
+
+/* Inactive page button */
+.psc-pp-pg-btn .ia-button,
+.psc-pp-pg-btn.ia-button {
+  width:            28px                      !important;
+  height:           28px                      !important;
+  background-color: transparent               !important;
+  border:           1px solid var(--pp-bdr)   !important;
+  border-radius:    2px                       !important;
+  color:            var(--pp-txt3)            !important;
+  font-size:        11px                      !important;
+  padding:          0                         !important;
+}
+.psc-pp-pg-btn .ia-button:hover {
+  border-color: var(--pp-blue) !important;
+  color:        var(--pp-blue) !important;
+  opacity: 1                   !important;
+}
+.psc-pp-pg-btn .ia-button .text {
+  color:     var(--pp-txt3) !important;
+  font-size: 11px           !important;
+}
+
+/* Active page button */
+.psc-pp-pg-btn-active .ia-button,
+.psc-pp-pg-btn-active.ia-button {
+  width:            28px                       !important;
+  height:           28px                       !important;
+  background-color: var(--pp-b10)              !important;
+  border:           1px solid var(--pp-blue)   !important;
+  border-radius:    2px                        !important;
+  color:            var(--pp-blue)             !important;
+  font-size:        11px                       !important;
+  padding:          0                          !important;
+}
+.psc-pp-pg-btn-active .ia-button .text {
+  color:     var(--pp-blue) !important;
+  font-size: 11px           !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Record count label */
+.psc-pp-pg-label {
+  font-size: 10px                !important;
+  color:     var(--pp-txt3)      !important;
+}
+
+/* Status cell colors */
+.psc-pp-td-active  { color: var(--pp-green) !important; font-size:9px !important; }
+.psc-pp-td-alert   { color: var(--pp-red)   !important; font-size:9px !important; }
+.psc-pp-td-pending { color: var(--pp-gold)  !important; font-size:9px !important; }
+.psc-pp-td-value   { color: var(--pp-blue)  !important; }
+
+/* .pg-btn: width:28px; height:28px; border:1px solid bdr; border-radius:2px; transparent; txt3; 11px */
+.psc-pp-pg-btn .ia-button,
+.psc-pp-pg-btn.ia-button {
+  width:            28px !important;
+  height:           28px !important;
+  background-color: transparent          !important;
+  border:           1px solid var(--pp-bdr) !important;
+  border-radius:    2px                  !important;
+  color:            var(--pp-txt3)       !important;
+  font-size:        11px                 !important;
+  padding:          0                    !important;
+}
+.psc-pp-pg-btn .ia-button:hover { border-color:var(--pp-blue) !important; color:var(--pp-blue) !important; opacity:1 !important; }
+.psc-pp-pg-btn .ia-button .text { color:var(--pp-txt3) !important; font-size:11px !important; }
+
+/* .pg-btn.active: border-color:blue; color:blue; bg:b10 */
+.psc-pp-pg-btn-active .ia-button,
+.psc-pp-pg-btn-active.ia-button {
+  width:            28px !important;
+  height:           28px !important;
+  background-color: var(--pp-b10)        !important;
+  border:           1px solid var(--pp-blue) !important;
+  border-radius:    2px                  !important;
+  color:            var(--pp-blue)       !important;
+  font-size:        11px                 !important;
+  padding:          0                    !important;
+}
+.psc-pp-pg-btn-active .ia-button .text { color:var(--pp-blue) !important; font-size:11px !important; }
+
+
+/* ── ALERTS ───────────────────────────────────────────────────
+   .alert: flex; gap:10px; padding:11px 14px; border-radius:3px;
+           12px; border-left:2px solid
+   classes: pp-alert-info / pp-alert-success /
+            pp-alert-warning / pp-alert-danger
+────────────────────────────────────────────────────────────── */
+
+/* Base alert layout */
+.psc-pp-alert-info,
+.psc-pp-alert-success,
+.psc-pp-alert-warning,
+.psc-pp-alert-danger {
+  display:      flex          !important;
+  align-items:  flex-start    !important;
+  gap:          10px          !important;
+  padding:      11px 14px     !important;
+  border-radius:3px           !important;
+  font-size:    12px          !important;
+  margin-bottom:8px           !important;
+}
+
+/* .alert-info: bg:b10; border-left-color:blue; color:rgba(160,200,255,.8) */
+.psc-pp-alert-info {
+  background-color: var(--pp-b10)  !important;
+  border-left:      2px solid var(--pp-blue) !important;
+  color:            var(--pp-info-c) !important;
+}
+
+/* .alert-success: bg:g10; border-left-color:green; color:rgba(180,230,130,.8) */
+.psc-pp-alert-success {
+  background-color: var(--pp-g10)  !important;
+  border-left:      2px solid var(--pp-green) !important;
+  color:            var(--pp-success-c) !important;
+}
+
+/* .alert-warning: bg:gold10; border-left-color:gold; color:rgba(255,220,130,.8) */
+.psc-pp-alert-warning {
+  background-color: var(--pp-gold10) !important;
+  border-left:      2px solid var(--pp-gold) !important;
+  color:            var(--pp-warning-c) !important;
+}
+
+/* .alert-danger: bg:r10; border-left-color:red; color:rgba(255,160,150,.8) */
+.psc-pp-alert-danger {
+  background-color: var(--pp-r10)  !important;
+  border-left:      2px solid var(--pp-red) !important;
+  color:            var(--pp-danger-c) !important;
+}
+
+/* Alert strong titles */
+.psc-pp-alert-title-info    { color: var(--pp-info-c) !important; font-weight:500 !important; font-size:12px !important; }
+.psc-pp-alert-title-success { color: var(--pp-success-c) !important; font-weight:500 !important; font-size:12px !important; }
+.psc-pp-alert-title-warning { color: var(--pp-warning-c) !important; font-weight:500 !important; font-size:12px !important; }
+.psc-pp-alert-title-danger  { color: var(--pp-danger-c) !important; font-weight:500 !important; font-size:12px !important; }
+
+/* Toasts */
+.psc-pp-toast-info {
+  background-color: var(--pp-b10)        !important;
+  border:           1px solid var(--pp-b35) !important;
+  border-radius:    3px                  !important;
+  padding:          10px 14px            !important;
+  font-size:        12px                 !important;
+  color:            var(--pp-info-c)!important;
+}
+.psc-pp-toast-danger {
+  background-color: var(--pp-r10)        !important;
+  border:           1px solid var(--pp-r35) !important;
+  border-radius:    3px                  !important;
+  padding:          10px 14px            !important;
+  font-size:        12px                 !important;
+  color:            var(--pp-danger-c)!important;
+}
+
+
+/* ── MODAL ────────────────────────────────────────────────────
+   classes: pp-modal / pp-modal-overlay / pp-modal-head /
+            pp-modal-title / pp-modal-x / pp-modal-body /
+            pp-modal-foot / pp-modal-beam
+────────────────────────────────────────────────────────────── */
+
+/* .modal: bg:bg2; border:1px solid bdr2; border-radius:6px */
+.psc-pp-modal {
+  background-color: var(--pp-bg2)        !important;
+  border:           1px solid var(--pp-bdr2) !important;
+  border-radius:    6px                  !important;
+  overflow:         hidden               !important;
+  position:         relative             !important;
+}
+
+/* .modal-shell overlay */
+.psc-pp-modal-overlay {
+  background-color: var(--pp-scrim, rgba(2,8,16,.85)) !important;
+  border-radius:    6px              !important;
+}
+
+/* .modal-top: height:1px; gradient red→blue */
+.psc-pp-modal-beam {
+  height:     1px   !important;
+  background: linear-gradient(90deg, var(--pp-red), var(--pp-blue)) !important;
+  border:     none  !important;
+}
+
+/* .modal-head: padding:16px 16px 10px */
+.psc-pp-modal-head {
+  padding: 16px 16px 10px !important;
+}
+
+/* .modal-title: 13px/500/#fff */
+.psc-pp-modal-title {
+  font-size:   13px !important;
+  font-weight: 500  !important;
+  color:       var(--pp-heading) !important;
+}
+
+/* .modal-x: 22px; border:1px solid bdr; border-radius:2px; txt3 */
+.psc-pp-modal-x {
+  width:            22px                    !important;
+  height:           22px                    !important;
+  border:           1px solid var(--pp-bdr) !important;
+  border-radius:    2px                     !important;
+  color:            var(--pp-txt3)          !important;
+  background-color: transparent             !important;
+  cursor:           pointer                 !important;
+}
+
+/* .modal-body: padding:0 16px 16px; 12px/txt2/line-height:1.65 */
+.psc-pp-modal-body {
+  padding:     0 16px 16px !important;
+  font-size:   12px        !important;
+  color:       var(--pp-txt2) !important;
+  line-height: 1.65        !important;
+}
+
+/* .modal-foot: padding:12px 16px; border-top:1px solid bdr */
+.psc-pp-modal-foot {
+  padding:      12px 16px           !important;
+  border-top:   1px solid var(--pp-bdr) !important;
+}
+
+
+/* ── PROGRESS BARS ────────────────────────────────────────────
+   classes: pp-progress-wrap / pp-progress-label /
+            pp-progress-track / pp-progress-fill-blue etc.
+────────────────────────────────────────────────────────────── */
+
+.psc-pp-progress-wrap  { margin-bottom: 10px !important; }
+
+/* .progress-label: flex; justify-content:space-between; 10px/txt3; letter-spacing:.05em */
+.psc-pp-progress-label {
+  display:         flex              !important;
+  justify-content: space-between     !important;
+  font-size:       10px              !important;
+  color:           var(--pp-txt3)    !important;
+  margin-bottom:   4px               !important;
+  letter-spacing:  .05em             !important;
+}
+
+/* .progress-track: height:4px; bg:b10; border-radius:2px */
+.psc-pp-progress-track {
+  height:           4px            !important;
+  background-color: var(--pp-b10)  !important;
+  border-radius:    2px            !important;
+  overflow:         hidden         !important;
+}
+
+/* .progress-fill: height:100%; border-radius:2px */
+.psc-pp-progress-blue  { height:100% !important; border-radius:2px !important; background-color:var(--pp-blue)  !important; }
+.psc-pp-progress-red   { height:100% !important; border-radius:2px !important; background-color:var(--pp-red)   !important; }
+.psc-pp-progress-green { height:100% !important; border-radius:2px !important; background-color:var(--pp-green) !important; }
+.psc-pp-progress-gold  { height:100% !important; border-radius:2px !important; background-color:var(--pp-gold)  !important; }
+
+/* Progress value labels */
+.psc-pp-progress-val-blue  { color: var(--pp-blue)  !important; font-size:10px !important; }
+.psc-pp-progress-val-red   { color: var(--pp-red)   !important; font-size:10px !important; }
+.psc-pp-progress-val-green { color: var(--pp-green) !important; font-size:10px !important; }
+.psc-pp-progress-val-gold  { color: var(--pp-gold)  !important; font-size:10px !important; }
+
+
+/* ── SPINNERS ─────────────────────────────────────────────────
+   .spin-ring: 28px; border:2px solid b10; border-top-color:blue; border-radius:50%; animation:spin .8s
+   classes: pp-spinner / pp-spinner-red / pp-spinner-gold /
+            pp-spinner-sm / pp-spinner-lg
+────────────────────────────────────────────────────────────── */
+
+.psc-pp-spinner {
+  width:        28px  !important;
+  height:       28px  !important;
+  border:       2px solid var(--pp-b10) !important;
+  border-top-color: var(--pp-blue) !important;
+  border-radius:50%   !important;
+  animation:    pp-spin .8s linear infinite !important;
+}
+.psc-pp-spinner-red {
+  width:28px !important; height:28px !important;
+  border:2px solid var(--pp-r10) !important;
+  border-top-color:var(--pp-red) !important;
+  border-radius:50% !important;
+  animation:pp-spin .8s linear infinite !important;
+}
+.psc-pp-spinner-gold {
+  width:28px !important; height:28px !important;
+  border:2px solid var(--pp-gold10) !important;
+  border-top-color:var(--pp-gold) !important;
+  border-radius:50% !important;
+  animation:pp-spin .8s linear infinite !important;
+}
+.psc-pp-spinner-sm { width:18px !important; height:18px !important; border-width:1.5px !important; }
+.psc-pp-spinner-lg { width:40px !important; height:40px !important; }
+
+/* Dot loader dots */
+.psc-pp-dot-loader-dot {
+  width:            6px  !important;
+  height:           6px  !important;
+  border-radius:    50%  !important;
+  background-color: var(--pp-blue) !important;
+  animation:        pp-pulse 1.2s infinite !important;
+}
+
+
+/* ── TOOLTIPS ─────────────────────────────────────────────────
+   .tooltip-box: bg:bg3; border:1px solid bdr2; border-radius:3px;
+                 padding:6px 10px; 11px; color:txt
+   classes: pp-tooltip / pp-tooltip-blue / pp-tooltip-red / pp-tooltip-green
+────────────────────────────────────────────────────────────── */
+
+.psc-pp-tooltip {
+  background-color: var(--pp-bg3)           !important;
+  border:           1px solid var(--pp-bdr2)!important;
+  border-radius:    3px                     !important;
+  padding:          6px 10px                !important;
+  font-size:        11px                    !important;
+  color:            var(--pp-txt)           !important;
+  white-space:      nowrap                  !important;
+}
+.psc-pp-tooltip-blue  { background-color:var(--pp-bg3) !important; border:1px solid var(--pp-bdr2) !important; border-top:1px solid var(--pp-blue)  !important; border-radius:3px !important; padding:6px 10px !important; font-size:11px !important; color:var(--pp-txt) !important; }
+.psc-pp-tooltip-red   { background-color:var(--pp-bg3) !important; border:1px solid var(--pp-bdr2) !important; border-top:1px solid var(--pp-red)   !important; border-radius:3px !important; padding:6px 10px !important; font-size:11px !important; color:var(--pp-txt) !important; }
+.psc-pp-tooltip-green { background-color:var(--pp-bg3) !important; border:1px solid var(--pp-bdr2) !important; border-top:1px solid var(--pp-green) !important; border-radius:3px !important; padding:6px 10px !important; font-size:11px !important; color:var(--pp-txt) !important; }
+
+
+/* ── DIVIDERS ─────────────────────────────────────────────────
+   classes: pp-divider / pp-divider-blue / pp-divider-brand / pp-divider-dashed
+────────────────────────────────────────────────────────────── */
+.psc-pp-divider        { height:1px !important; background-color:var(--pp-bdr) !important; border:none !important; }
+.psc-pp-divider-blue   { height:1px !important; background:linear-gradient(90deg,transparent,var(--pp-blue),transparent) !important; border:none !important; }
+.psc-pp-divider-red   { height:1px !important; background:linear-gradient(90deg,transparent,var(--pp-red),transparent) !important; border:none !important; }
+.psc-pp-divider-brand  { height:1px !important; background:linear-gradient(90deg,var(--pp-red),var(--pp-blue)) !important; border:none !important; }
+.psc-pp-divider-dashed { height:0   !important; border-top:1px dashed rgba(74,144,226,.2) !important; background:none !important; }
+
+
+
+/* Target Perspective's own flex container element directly */
+.ia_flexContainer.psc-pp-bg-0,
+.ia_flexContainer.psc-pp-bg-0 > .ia_flexContainer__column {
+  background-color: var(--pp-bg0) !important;
+}
+
+.ia_flexContainer.psc-pp-bg-1,
+.ia_flexContainer.psc-pp-bg-1 > .ia_flexContainer__column {
+  background-color: var(--pp-bg1) !important;
+}
+
+.ia_flexContainer.psc-pp-bg-2,
+.ia_flexContainer.psc-pp-bg-2 > .ia_flexContainer__column {
+  background-color: var(--pp-bg2) !important;
+}
+
+.ia_flexContainer.psc-pp-bg-3,
+.ia_flexContainer.psc-pp-bg-3 > .ia_flexContainer__column {
+  background-color: var(--pp-bg3) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * LOADING TRON SCREEN
+*/
+
+/*
+ * PrecisionPac — Ignition Perspective Loading Screen
+ * File: stylesheet.css
+ * Location in Ignition Designer:
+ *   Project Browser → Perspective → Styles → (right-click) Enable Advanced Stylesheet
+ *
+ * Requires Ignition 8.1.22+ for Advanced Stylesheet support.
+ *
+ * HOW TO USE:
+ *   1. Paste this entire file into your project's stylesheet.css
+ *   2. Add the SVG drawing component to your Perspective view
+ *   3. Apply class names (e.g. "psc-pp-loop1f") to SVG elements
+ *      via the element's style.classes property
+ * ============================================================
+ */
+
+
+/* ── Keyframe Definitions ─────────────────────────────────── */
+
+/* Horizontal/Vertical comet travel — one keyframe per perimeter.
+   Offset values match each rectangle's perimeter length:
+     pA  30,20   280×180  → 920
+     pB  370,0   290×200  → 980
+     pC  190,190 280×160  → 880
+     pD  390,200 270×160  → 860
+     pE  60,50   180×120  → 600                              */
+
+@keyframes pp-loop1f { 0% { stroke-dashoffset: 920; }  100% { stroke-dashoffset: 0; } }
+@keyframes pp-loop1r { 0% { stroke-dashoffset: 0; }    100% { stroke-dashoffset: 920; } }
+@keyframes pp-loop2f { 0% { stroke-dashoffset: 980; }  100% { stroke-dashoffset: 0; } }
+@keyframes pp-loop2r { 0% { stroke-dashoffset: 0; }    100% { stroke-dashoffset: 980; } }
+@keyframes pp-loop3f { 0% { stroke-dashoffset: 880; }  100% { stroke-dashoffset: 0; } }
+@keyframes pp-loop4f { 0% { stroke-dashoffset: 860; }  100% { stroke-dashoffset: 0; } }
+@keyframes pp-loop4r { 0% { stroke-dashoffset: 0; }    100% { stroke-dashoffset: 860; } }
+@keyframes pp-loop5f { 0% { stroke-dashoffset: 600; }  100% { stroke-dashoffset: 0; } }
+
+/* Ambient glow breathe */
+@keyframes pp-ambient {
+  0%,  100% { opacity: 0.6; }
+  50%       { opacity: 1;   }
+}
+
+/* Rect halo pulse */
+@keyframes pp-rectglow {
+  0%,  100% { opacity: 0.04; }
+  50%       { opacity: 0.14; }
+}
+
+/* Scanline sweep */
+@keyframes pp-scanline {
+  0%   { top: 0%;   }
+  100% { top: 100%; }
+}
+
+/* HUD fade-up on load */
+@keyframes pp-fadeup {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0);   }
+}
+
+/* Cursor blink */
+@keyframes pp-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* Progress bar fill */
+@keyframes pp-bardash {
+  0%   { width: 0%;   }
+  100% { width: 72%;  }
+}
+
+/* Status dot pulse */
+@keyframes pp-pulsedot {
+  0%, 100% { opacity: 1;    }
+  50%      { opacity: 0.25; }
+}
+
+
+/* ── Speed Variants ───────────────────────────────────────────
+   Three speed tiers: slow / medium / fast.
+   Apply ONE speed class per comet layer element.
+   All comets on the same colour family share a speed tier
+   but use multipliers for natural variation between rects.
+
+   Slow   ≈ 14–20s   (subtle, barely noticeable)
+   Medium ≈ 8–12s    (default — recommended for loading screens)
+   Fast   ≈ 3–6s     (more energetic)
+   ────────────────────────────────────────────────────────── */
+
+/* ── RECT A  (perimeter 920) ─── */
+/* Blue CW */
+.psc-pp-a1-slow   { animation: pp-loop1f 18s linear infinite; }
+.psc-pp-a1-medium { animation: pp-loop1f 8s  linear infinite; }
+.psc-pp-a1-fast   { animation: pp-loop1f 3.1s linear infinite; }
+/* Red CCW */
+.psc-pp-a2-slow   { animation: pp-loop1r 22s  linear infinite 1.5s; }
+.psc-pp-a2-medium { animation: pp-loop1r 12s  linear infinite 1.5s; }
+.psc-pp-a2-fast   { animation: pp-loop1r 5s   linear infinite 1.5s; }
+
+/* ── RECT B  (perimeter 980) ─── */
+/* Blue CW */
+.psc-pp-b1-slow   { animation: pp-loop2f 24s  linear infinite 0.8s; }
+.psc-pp-b1-medium { animation: pp-loop2f 11s  linear infinite 0.8s; }
+.psc-pp-b1-fast   { animation: pp-loop2f 4s   linear infinite 0.8s; }
+/* Gold CCW */
+.psc-pp-b2-slow   { animation: pp-loop2r 20s  linear infinite 2.2s; }
+.psc-pp-b2-medium { animation: pp-loop2r 10s  linear infinite 2.2s; }
+.psc-pp-b2-fast   { animation: pp-loop2r 4.5s linear infinite 2.2s; }
+
+/* ── RECT C  (perimeter 880) ─── */
+/* Blue CW */
+.psc-pp-c1-slow   { animation: pp-loop3f 20s  linear infinite 2s; }
+.psc-pp-c1-medium { animation: pp-loop3f 9s   linear infinite 2s; }
+.psc-pp-c1-fast   { animation: pp-loop3f 4.7s linear infinite 2s; }
+
+/* ── RECT D  (perimeter 860) ─── */
+/* Red CW */
+.psc-pp-d1-slow   { animation: pp-loop4f 18s  linear infinite 1.3s; }
+.psc-pp-d1-medium { animation: pp-loop4f 9s   linear infinite 1.3s; }
+.psc-pp-d1-fast   { animation: pp-loop4f 3.8s linear infinite 1.3s; }
+/* Gold CCW */
+.psc-pp-d2-slow   { animation: pp-loop4r 24s  linear infinite 0.4s; }
+.psc-pp-d2-medium { animation: pp-loop4r 12s  linear infinite 0.4s; }
+.psc-pp-d2-fast   { animation: pp-loop4r 6s   linear infinite 0.4s; }
+
+/* ── RECT E  (perimeter 600, inner small rect) ─── */
+/* Blue CW — always slightly faster than outer rects */
+.psc-pp-e1-slow   { animation: pp-loop5f 14s  linear infinite 0.5s; }
+.psc-pp-e1-medium { animation: pp-loop5f 7s   linear infinite 0.5s; }
+.psc-pp-e1-fast   { animation: pp-loop5f 2.4s linear infinite 0.5s; }
+
+
+/* ── Ambient & Rect Glow ──────────────────────────────────── */
+.psc-pp-ambient-1 { animation: pp-ambient  5.5s ease-in-out infinite; }
+.psc-pp-ambient-2 { animation: pp-ambient  7s   ease-in-out infinite 1.2s; }
+.psc-pp-ambient-3 { animation: pp-ambient  5.8s ease-in-out infinite 1s; }
+.psc-pp-ambient-4 { animation: pp-ambient  6.2s ease-in-out infinite 2.5s; }
+
+.psc-pp-rectglow-1 { animation: pp-rectglow 4.2s ease-in-out infinite; }
+.psc-pp-rectglow-2 { animation: pp-rectglow 5.1s ease-in-out infinite 0.9s; }
+.psc-pp-rectglow-3 { animation: pp-rectglow 4.7s ease-in-out infinite 1.8s; }
+.psc-pp-rectglow-4 { animation: pp-rectglow 3.9s ease-in-out infinite 2.6s; }
+
+
+/* ── HUD Overlay Elements ─────────────────────────────────── */
+.psc-pp-scanline {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: rgba(74, 144, 226, 0.18);
+  animation: pp-scanline 3.5s linear infinite;
+  pointer-events: none;
+}
+
+.psc-pp-hud {
+  animation: pp-fadeup 0.8s ease-out 0.3s both;
+}
+
+.psc-pp-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4A90E2;
+  animation: pp-pulsedot 1.8s infinite;
+}
+
+.psc-pp-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #4A90E2, #EF3E33);
+  animation: pp-bardash 3.5s ease-in-out infinite alternate;
+}
+
+.psc-pp-cursor {
+  animation: pp-blink 1s step-end infinite;
+}
+
+
+
+/* ==========================================================================
+   MenuTree — PrecisionPac Dark HUD theme (v2, using confirmed DOM classes)
+   Paste into: Designer → Project Browser → Styles → stylesheet.css
+
+   Verified against live-session inspector output:
+     .ia_menuTreeComponent                  root
+       .menu-frame > .menu-wrapper
+         .menu-option.menu-item.ia_menuTreeComponent__item   each row
+           .label-icon > svg.ia_menuTreeComponent__item__icon
+           .label-text  > .ia_menuTreeComponent__item__text
+           .nav-icon    > svg.ia_menuTreeComponent__item__navIcon
+         .submenu-group   nested items render here when expanded
+
+   No property-editor Style Class assignment needed — these classes are
+   already on the rendered elements, so plain selectors below hook
+   straight into them.
+   ========================================================================== */
+
+/* ---- 1. Root container ------------------------------------------------ */
+.ia_menuTreeComponent {
+  background: #030c18;                          /* --bg1 */
+  border-right: 1px solid rgba(74, 144, 226, .15); /* --bdr */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 8px 0;
+  position: relative;
+}
+
+/* Thin red→blue accent line across the top, matching the design system's
+   card-top / divider treatment. */
+.ia_menuTreeComponent::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+/*  background: linear-gradient(90deg, #EF3E33, #4A90E2);*/
+  pointer-events: none;
+}
+
+/* ---- 2. Item rows ------------------------------------------------------ */
+.ia_menuTreeComponent .menu-option.ia_menuTreeComponent__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  font-size: 11px;
+  letter-spacing: .02em;
+  color: rgba(160, 200, 255, .55);              /* --txt2 */
+  border-left: 2px solid transparent;
+  border-bottom: 1px solid rgba(74, 144, 226, .1); /* --bdr, subtle row divider */
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.ia_menuTreeComponent .menu-option.ia_menuTreeComponent__item:hover {
+  color: rgba(160, 200, 255, .85);
+  background: rgba(74, 144, 226, .1);           /* --b10 */
+}
+
+/* Active/selected row — UNCONFIRMED, pick whichever matches what you see
+   after clicking an item and re-inspecting. Delete the ones that don't
+   apply once you've confirmed the real one. */
+.ia_menuTreeComponent .menu-option.selected,
+.ia_menuTreeComponent .menu-option.menu-item-selected,
+.ia_menuTreeComponent .menu-option.active,
+.ia_menuTreeComponent .menu-option[aria-selected="true"] {
+  color: #4A90E2;                               /* --blue */
+  border-left-color: #4A90E2;
+  background: rgba(74, 144, 226, .1);
+}
+
+/* ---- 3. Icons ----------------------------------------------------------- */
+/* SVGs have no explicit fill attribute, so CSS `fill` on the path works
+   and `currentColor` picks up whatever `color` is active on the row —
+   meaning hover/selected color changes above cascade into the icons
+   automatically, no extra rules needed for state changes. */
+.ia_menuTreeComponent__item__icon path {
+  fill: currentColor;
+}
+.ia_menuTreeComponent .label-icon {
+  color: rgba(160, 200, 255, .4);
+  display: flex;
+  align-items: center;
+}
+
+/* ---- 4. Text ------------------------------------------------------------ */
+.ia_menuTreeComponent__item__text {
+  flex: 1;
+  font-family: inherit;
+}
+
+/* ---- 5. Chevron / nav icon ----------------------------------------------- */
+.ia_menuTreeComponent__item__navIcon path {
+  fill: currentColor;
+}
+.ia_menuTreeComponent .nav-icon {
+  color: rgba(120, 170, 220, .35);              /* --txt3 */
+  display: flex;
+  align-items: center;
+}
+
+/* ---- 6. Nested / submenu items ------------------------------------------- */
+.ia_menuTreeComponent .submenu-group .ia_menuTreeComponent__item {
+  padding-left: 32px;
+  font-size: 10.5px;
+}
+
+/* ---- 7. Back button (shown when drilled into a submenu) ----------------- */
+/* This element lives outside .menu-option, so none of the item rules
+   above reach it — it was inheriting Ignition's default light theme,
+   hence the gray bar. */
+.ia_menuTreeComponent__backAction {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  background: #030c18;                          /* --bg1 */
+  border-bottom: 1px solid rgba(74, 144, 226, .15);
+  color: rgba(160, 200, 255, .55);               /* --txt2 */
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+
+.ia_menuTreeComponent__backAction:hover {
+  background: rgba(74, 144, 226, .1);            /* --b10 */
+  color: rgba(160, 200, 255, .85);
+}
+
+.ia_menuTreeComponent__backAction .back-icon svg,
+.ia_menuTreeComponent__backAction .back-icon path {
+  fill: currentColor;
+}
+
+/* ---- 8. Submenu header row (e.g. "Menu Item 1" once drilled in) --------- */
+.ia_menuTreeComponent__header {
+  background: #040f1e;                           /* --bg2, slightly lifted */
+  border-bottom: 1px solid rgba(74, 144, 226, .25); /* --bdr2 */
+}
+
+.ia_menuTreeComponent__header .header-text {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .05em;
+  color: #4A90E2;                                /* --blue, reads as active section */
+}
+
+.ia_menuTreeComponent__header__icon path {
+  fill: currentColor;
+}
+.ia_menuTreeComponent__header .label-icon {
+  color: #4A90E2;
+}
