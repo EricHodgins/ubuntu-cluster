@@ -6,8 +6,6 @@
  * and the existing pp-* class names are intentionally preserved.
  */
 
-@import "../dark/index.css";
-
 :root          → all --pp-* tokens, globally available
                     to every component with no class needed
 
@@ -59,92 +57,74 @@
    Extracted 1:1 from the HTML source file
 ══════════════════════════════════════════════════════════════ */
 :root {
-  /* Brand colors */
-  --pp-blue-hover:  #3a7bc8;
-  --pp-red-hover:   #c62b21;
+  /* PrecisionPac dark theme tokens */
+  --pp-blue-hover: #3a7bc8;
+  --pp-red-hover: #c62b21;
   --pp-default: #FFFFFF;
-  --pp-blue:    #4A90E2;
-  --pp-red:     #EF3E33;
+  --pp-blue: #4A90E2;
+  --pp-red: #EF3E33;
   --pp-primary: #4A90E2;
-  --pp-gold:    #F6B93B;
-  --pp-green:   #8BC34A;
-  --pp-white:   #FFFFFF;
-  --pp-orange:      #FF9800;
+  --pp-gold: #F6B93B;
+  --pp-green: #8BC34A;
+  --pp-white: #FFFFFF;
+  --pp-orange: #FF9800;
 
+  --pp-b10: rgba(74,144,226,.1);
+  --pp-b20: rgba(74,144,226,.2);
+  --pp-b35: rgba(74,144,226,.35);
+  --pp-r10: rgba(239,62,51,.1);
+  --pp-r20: rgba(239,62,51,.2);
+  --pp-r35: rgba(239,62,51,.35);
+  --pp-g10: rgba(139,195,74,.1);
+  --pp-g25: rgba(139,195,74,.25);
+  --pp-gold10: rgba(246,185,59,.1);
+  --pp-gold25: rgba(246,185,59,.25);
+  --pp-orange-10: rgba(255,152,0,.10);
+  --pp-orange-25: rgba(255,152,0,.25);
+  --pp-orange-35: rgba(255,152,0,.35);
 
-  /* Blue tints */
-  --pp-b10:     rgba(74,144,226,.1);
-  --pp-b20:     rgba(74,144,226,.2);
-  --pp-b35:     rgba(74,144,226,.35);
+  --pp-grey: #8A9BB0;
+  --pp-grey10: rgba(138,155,176,.1);
+  --pp-grey20: rgba(138,155,176,.2);
+  --pp-grey35: rgba(138,155,176,.35);
+  --pp-grey55: rgba(138,155,176,.55);
+  --pp-grey75: rgba(138,155,176,.75);
 
-  /* Red tints */
-  --pp-r10:     rgba(239,62,51,.1);
-  --pp-r20:     rgba(239,62,51,.2);
-  --pp-r35:     rgba(239,62,51,.35);
-
-  /* Green tints */
-  --pp-g10:     rgba(139,195,74,.1);
-  --pp-g25:     rgba(139,195,74,.25);
-
-  /* Gold tints */
-  --pp-gold10:  rgba(246,185,59,.1);
-  --pp-gold25:  rgba(246,185,59,.25);
-
-  /* Orange Tints  */
-  --pp-orange-10:   rgba(255,152,0,0.10);
-  --pp-orange-25:   rgba(255,152,0,0.25);
-  --pp-orange-35:   rgba(255,152,0,0.35);
-
-  /* Grey tints — renamed from g10/g20/g35/g55/g75 to grey10/grey20/grey35/grey55/grey75
-     to stop colliding with the GREEN tints above (--pp-g10/g25). The old names
-     silently overwrote the green tint, which made every "success" badge/pill/
-     button render grey instead of green. */
-  --pp-grey:    #8A9BB0;
-  --pp-grey10:  rgba(138,155,176,.1);
-  --pp-grey20:  rgba(138,155,176,.2);
-  --pp-grey35:  rgba(138,155,176,.35);
-  --pp-grey55:  rgba(138,155,176,.55);
-  --pp-grey75:  rgba(138,155,176,.75);
-
-
-  /* Backgrounds */
-  --pp-bg0:     #020810;
-  --pp-bg1:     #030c18;
-  --pp-bg2:     #040f1e;
-  --pp-bg3:     #071525;
-
-  /* Text */
-  --pp-txt:     #c8dff5;
-  --pp-txt2:    rgba(160,200,255,.55);
-  --pp-txt3:    rgba(120,170,220,.35);
+  --pp-bg0: #020810;
+  --pp-bg1: #030c18;
+  --pp-bg2: #040f1e;
+  --pp-bg3: #071525;
+  --pp-txt: #c8dff5;
+  --pp-txt2: rgba(160,200,255,.55);
+  --pp-txt3: rgba(120,170,220,.35);
   --pp-heading: var(--pp-blue);
-
-  /* Borders */
-  --pp-bdr:     rgba(74,144,226,.15);
-  --pp-bdr2:    rgba(74,144,226,.25);
-
-  /* Status text (alerts/toasts — readable on dark bg) */
-  --pp-info-c:    rgba(160,200,255,.8);
-  --pp-danger-c:  rgba(255,160,150,.8);
+  --pp-bdr: rgba(74,144,226,.15);
+  --pp-bdr2: rgba(74,144,226,.25);
+  --pp-info-c: rgba(160,200,255,.8);
+  --pp-danger-c: rgba(255,160,150,.8);
   --pp-success-c: rgba(180,230,130,.8);
   --pp-warning-c: rgba(255,220,130,.8);
-  --pp-scrim:     rgba(2,8,16,.85);
-
-  /* Fonts */
+  --pp-scrim: rgba(2,8,16,.85);
   --pp-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --pp-font-size: 14px;
 
-  /* HUDS  */
   --pp-hud-bar-track-bg-col: #030c18;
   --pp-hud-bar-track-border-col: rgba(74,144,226,.35);
-
   --pp-hud-bar-fill-light-bg-col: rgba(74,144,226,.1);
   --pp-hud-bar-fill-medium-bg-col: rgba(74,144,226,.35);
   --pp-hud-bar-fill-dark-bg-col: #4A90E2;
-
   --pp-hud-metric-color: #FFFFFF;
-  
+
+  /* MenuTree / portal colors */
+  --pp-menu-text-strong: var(--pp-menu-text-strong);
+  --pp-menu-icon: rgba(160,200,255,.4);
+  --pp-menu-nav: rgba(120,170,220,.35);
+  --pp-menu-divider: rgba(74,144,226,.1);
+  --pp-grid-line: rgba(74,144,226,.055);
+  --pp-grid-line-strong: rgba(74,144,226,.08);
+  --pp-scanline-color: rgba(74,144,226,.18);
 }
+
 
 /* ══════════════════════════════════════════════════════════════
    LIGHT THEME — same variable names, light-mode values.
@@ -573,8 +553,8 @@
 /* Tron grid overlay — classes: pp-grid */
 .psc-pp-grid {
   background-image:
-    linear-gradient(rgba(74,144,226,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74,144,226,.055) 1px, transparent 1px) !important;
+    linear-gradient(var(--pp-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--pp-grid-line) 1px, transparent 1px) !important;
   background-size: 28px 28px !important;
 }
 
@@ -932,7 +912,7 @@
 .psc-pp-badge-offline {
   font-size:9px !important; font-weight:500 !important; padding:2px 7px !important;
   border-radius:1px !important; letter-spacing:.07em !important; text-transform:uppercase !important;
-  background-color:rgba(74,144,226,.08) !important; color:var(--pp-txt3) !important;
+  background-color:var(--pp-grid-line-strong) !important; color:var(--pp-txt3) !important;
   border:1px solid var(--pp-bdr) !important;
 }
 .psc-pp-badge-herbicide {
@@ -1000,7 +980,7 @@
 .psc-pp-pill-blue  { font-size:10px !important; padding:3px 10px !important; border-radius:20px !important; background-color:var(--pp-b10)    !important; color:var(--pp-blue)  !important; border:1px solid var(--pp-b20)    !important; }
 .psc-pp-pill-green { font-size:10px !important; padding:3px 10px !important; border-radius:20px !important; background-color:var(--pp-g10)    !important; color:var(--pp-green) !important; border:1px solid var(--pp-g10)    !important; }
 .psc-pp-pill-gold  { font-size:10px !important; padding:3px 10px !important; border-radius:20px !important; background-color:var(--pp-gold10) !important; color:var(--pp-gold)  !important; border:1px solid var(--pp-gold10) !important; }
-.psc-pp-pill-muted { font-size:10px !important; padding:3px 10px !important; border-radius:20px !important; background-color:rgba(74,144,226,.07) !important; color:var(--pp-txt3) !important; border:1px solid var(--pp-bdr) !important; }
+.psc-pp-pill-muted { font-size:10px !important; padding:3px 10px !important; border-radius:20px !important; background-color:var(--pp-grid-line-strong) !important; color:var(--pp-txt3) !important; border:1px solid var(--pp-bdr) !important; }
 
 
 /* ── CARDS ────────────────────────────────────────────────────
@@ -1013,7 +993,7 @@
   left:             0                 !important;
   right:            0                 !important;
   height:           2px               !important;
-  background-color: rgba(74,144,226,0.18) !important;
+  background-color: var(--pp-scanline-color) !important;
   animation:        pp-scanline 3.5s linear infinite !important;
   pointer-events:   none              !important;
   z-index:          999               !important;
@@ -1101,8 +1081,8 @@
   display:          flex    !important;
   align-items:      center  !important;
   justify-content:  center  !important;
-  background-image: linear-gradient(rgba(74,144,226,.15) 1px,transparent 1px),
-                    linear-gradient(90deg,rgba(74,144,226,.15) 1px,transparent 1px) !important;
+  background-image: linear-gradient(var(--pp-bdr) 1px,transparent 1px),
+                    linear-gradient(90deg,var(--pp-bdr) 1px,transparent 1px) !important;
   background-size:  14px 14px !important;
 }
 
@@ -1405,7 +1385,7 @@ div.psc-pp-hud-metric-unit span,
             pp-sidebar / pp-sidebar-item / pp-sidebar-item-active
 ────────────────────────────────────────────────────────────── */
 
-/* .nav-bar: bg:#020810; border-bottom:1px solid rgba(74,144,226,.12); height:46px */
+/* .nav-bar: bg:var(--pp-bg0); border-bottom:1px solid rgba(74,144,226,.12); height:46px */
 .psc-pp-nav-bar {
   background-color: var(--pp-bg0)                  !important;
   border:    1px solid rgba(74,144,226,.12)  !important;
@@ -1421,7 +1401,7 @@ div.psc-pp-hud-metric-unit span,
   left:       0                                 !important;
   right:      0                                 !important;
   height:     1px                               !important;
-  background: rgba(74,144,226,.15)              !important;
+  background: var(--pp-bdr)              !important;
   animation:  pp-scanline 4s linear infinite    !important;
   pointer-events: none                          !important;
 }
@@ -1539,7 +1519,7 @@ div.psc-pp-hud-metric-unit span,
   border-left:      none                       !important;
   border-right:     none                       !important;
   cursor:           pointer                    !important;
-  background-color: rgba(74,144,226,.05)       !important;
+  background-color: var(--pp-grid-line)       !important;
 }
 
 .psc-pp-tab-active .ia_labelComponent span {
@@ -1734,9 +1714,9 @@ div.psc-pp-hud-metric-unit span,
 /* Track - OFF */
 /* Track - OFF */
 .psc-pp-toggle .ia_toggleSwitch__track {
-/*  background: #030c18 !important;*/
+/*  background: var(--pp-bg1) !important;*/
   background: rgba(var(--pp-b10), 0) !important;
-/*  border: 1px solid rgba(74, 144, 226, 0.25) !important;*/
+/*  border: 1px solid var(--pp-bdr2) !important;*/
   border: 1px solid var(--pp-b35) !important;
   border-radius: 9px !important;
   height: 16px !important;
@@ -1745,10 +1725,10 @@ div.psc-pp-hud-metric-unit span,
 
 /* Track - ON */
 .psc-pp-toggle .ia_toggleSwitch__track--selected {
-/*  background: rgba(74, 144, 226, 0.25) !important;*/
+/*  background: var(--pp-bdr2) !important;*/
   background: var(--pp-blue) !important;
 /*  border-color: rgba(74, 144, 226, 0.35) !important;*/
-  border: 1px solid var(--pp-gray) !important;
+  border: 1px solid var(--pp-grey) !important;
 }
 
 /* Thumb - base reset */
@@ -1759,7 +1739,7 @@ div.psc-pp-hud-metric-unit span,
   top: -14px !important;
   left: 3px !important;
   border-radius: 50% !important;
-/*  background: rgba(120, 170, 220, 0.65) !important;*/
+/*  background: var(--pp-menu-nav) !important;*/
   background: var(--pp-grey75) !important;
   transition: background 0.2s, left 0.2s !important;
 }
@@ -1791,19 +1771,19 @@ div.psc-pp-hud-metric-unit span,
 .psc-pp-checkbox .ia_checkbox__uncheckedIcon {
   font-size: 20px !important;  /* controls the actual rendered size */
   border-radius: 2px !important;
-  color: rgba(74, 144, 226, 0.25) !important;
+  color: var(--pp-bdr2) !important;
   transition: color 0.2s !important;
 }
 
 /* ── Checked state — full blue icon ── */
 .psc-pp-checkbox .ia_checkbox__checkedIcon {
-  color: #4A90E2 !important;
+  color: var(--pp-blue) !important;
 }
 
 /* ── Text label ── */
 .psc-pp-checkbox .checkbox-input-label {
   font-size: 12px !important;
-  color: rgba(160, 200, 255, 0.55) !important;
+  color: var(--pp-txt2) !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
 
@@ -1823,21 +1803,21 @@ div.psc-pp-hud-metric-unit span,
 /* ── Unselected icon ── */
 .psc-pp-radio .ia_radio__unselectedIcon {
   font-size: 14px !important;
-  color: rgba(74, 144, 226, 0.25) !important;
+  color: var(--pp-bdr2) !important;
   transition: color 0.2s !important;
 }
 
 /* ── Selected icon ── */
 .psc-pp-radio .ia_radio__selectedIcon {
   font-size: 14px !important;
-  color: #4A90E2 !important;
+  color: var(--pp-blue) !important;
   transition: color 0.2s !important;
 }
 
 /* ── Row label text ── */
 .psc-pp-radio .ia_radioGroupComponent_text {
   font-size: 12px !important;
-  color: rgba(160, 200, 255, 0.55) !important;
+  color: var(--pp-txt2) !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
 
@@ -2489,7 +2469,7 @@ div.psc-pp-hud-metric-unit span,
 .psc-pp-divider-blue   { height:1px !important; background:linear-gradient(90deg,transparent,var(--pp-blue),transparent) !important; border:none !important; }
 .psc-pp-divider-red   { height:1px !important; background:linear-gradient(90deg,transparent,var(--pp-red),transparent) !important; border:none !important; }
 .psc-pp-divider-brand  { height:1px !important; background:linear-gradient(90deg,var(--pp-red),var(--pp-blue)) !important; border:none !important; }
-.psc-pp-divider-dashed { height:0   !important; border-top:1px dashed rgba(74,144,226,.2) !important; background:none !important; }
+.psc-pp-divider-dashed { height:0   !important; border-top:1px dashed var(--pp-b20) !important; background:none !important; }
 
 
 
@@ -2697,14 +2677,14 @@ div.psc-pp-hud-metric-unit span,
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #4A90E2;
+  background: var(--pp-blue);
   animation: pp-pulsedot 1.8s infinite;
 }
 
 .psc-pp-progress-fill {
   height: 100%;
   border-radius: 2px;
-  background: linear-gradient(90deg, #4A90E2, #EF3E33);
+  background: linear-gradient(90deg, var(--pp-blue), var(--pp-red));
   animation: pp-bardash 3.5s ease-in-out infinite alternate;
 }
 
@@ -2734,7 +2714,7 @@ div.psc-pp-hud-metric-unit span,
 
 /* ---- 1. Root container ------------------------------------------------ */
 .ia_menuTreeComponent {
-  background: #030c18;                          /* --bg1 */
+  background: var(--pp-bg1);                          /* --bg1 */
   border-right: 1px solid rgba(74, 144, 226, .15); /* --bdr */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   padding: 8px 0;
@@ -2748,7 +2728,7 @@ div.psc-pp-hud-metric-unit span,
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-/*  background: linear-gradient(90deg, #EF3E33, #4A90E2);*/
+/*  background: linear-gradient(90deg, var(--pp-red), var(--pp-blue));*/
   pointer-events: none;
 }
 
@@ -2760,16 +2740,16 @@ div.psc-pp-hud-metric-unit span,
   padding: 9px 14px;
   font-size: 11px;
   letter-spacing: .02em;
-  color: rgba(160, 200, 255, .55);              /* --txt2 */
+  color: var(--pp-txt2);              /* --txt2 */
   border-left: 2px solid transparent;
-  border-bottom: 1px solid rgba(74, 144, 226, .1); /* --bdr, subtle row divider */
+  border-bottom: 1px solid var(--pp-b10); /* --bdr, subtle row divider */
   cursor: pointer;
   transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
 .ia_menuTreeComponent .menu-option.ia_menuTreeComponent__item:hover {
-  color: rgba(160, 200, 255, .85);
-  background: rgba(74, 144, 226, .1);           /* --b10 */
+  color: var(--pp-menu-text-strong);
+  background: var(--pp-b10);           /* --b10 */
 }
 
 /* Active/selected row — UNCONFIRMED, pick whichever matches what you see
@@ -2779,9 +2759,9 @@ div.psc-pp-hud-metric-unit span,
 .ia_menuTreeComponent .menu-option.menu-item-selected,
 .ia_menuTreeComponent .menu-option.active,
 .ia_menuTreeComponent .menu-option[aria-selected="true"] {
-  color: #4A90E2;                               /* --blue */
-  border-left-color: #4A90E2;
-  background: rgba(74, 144, 226, .1);
+  color: var(--pp-blue);                               /* --blue */
+  border-left-color: var(--pp-blue);
+  background: var(--pp-b10);
 }
 
 /* ---- 3. Icons ----------------------------------------------------------- */
@@ -2793,7 +2773,7 @@ div.psc-pp-hud-metric-unit span,
   fill: currentColor;
 }
 .ia_menuTreeComponent .label-icon {
-  color: rgba(160, 200, 255, .4);
+  color: var(--pp-menu-icon);
   display: flex;
   align-items: center;
 }
@@ -2809,7 +2789,7 @@ div.psc-pp-hud-metric-unit span,
   fill: currentColor;
 }
 .ia_menuTreeComponent .nav-icon {
-  color: rgba(120, 170, 220, .35);              /* --txt3 */
+  color: var(--pp-menu-nav);              /* --txt3 */
   display: flex;
   align-items: center;
 }
@@ -2829,16 +2809,16 @@ div.psc-pp-hud-metric-unit span,
   align-items: center;
   gap: 6px;
   padding: 9px 14px;
-  background: #030c18;                          /* --bg1 */
+  background: var(--pp-bg1);                          /* --bg1 */
   border-bottom: 1px solid rgba(74, 144, 226, .15);
-  color: rgba(160, 200, 255, .55);               /* --txt2 */
+  color: var(--pp-txt2);               /* --txt2 */
   cursor: pointer;
   transition: background .15s ease, color .15s ease;
 }
 
 .ia_menuTreeComponent__backAction:hover {
-  background: rgba(74, 144, 226, .1);            /* --b10 */
-  color: rgba(160, 200, 255, .85);
+  background: var(--pp-b10);            /* --b10 */
+  color: var(--pp-menu-text-strong);
 }
 
 .ia_menuTreeComponent__backAction .back-icon svg,
@@ -2848,7 +2828,7 @@ div.psc-pp-hud-metric-unit span,
 
 /* ---- 8. Submenu header row (e.g. "Menu Item 1" once drilled in) --------- */
 .ia_menuTreeComponent__header {
-  background: #040f1e;                           /* --bg2, slightly lifted */
+  background: var(--pp-bg2);                           /* --bg2, slightly lifted */
   border-bottom: 1px solid rgba(74, 144, 226, .25); /* --bdr2 */
 }
 
@@ -2856,12 +2836,12 @@ div.psc-pp-hud-metric-unit span,
   font-size: 10px;
   font-weight: 500;
   letter-spacing: .05em;
-  color: #4A90E2;                                /* --blue, reads as active section */
+  color: var(--pp-blue);                                /* --blue, reads as active section */
 }
 
 .ia_menuTreeComponent__header__icon path {
   fill: currentColor;
 }
 .ia_menuTreeComponent__header .label-icon {
-  color: #4A90E2;
+  color: var(--pp-blue);
 }
