@@ -1,0 +1,73 @@
+/* PrecisionPac light theme variables.
+ * Keep all project-facing --pp-* tokens here so Ignition 8.3 Designer
+ * can discover them as theme variables.
+ */
+
+:root {
+  /* PrecisionPac light theme tokens */
+  --pp-blue-hover: #1d5bb0;
+  --pp-red-hover: #a31e15;
+  --pp-default: #000000;
+  --pp-blue: #2566c9;
+  --pp-red: #c8281d;
+  --pp-primary: #2566c9;
+  --pp-gold: #a9710a;
+  --pp-green: #4f8a1e;
+  --pp-white: #ffffff;
+  --pp-orange: #c4690a;
+
+  --pp-b10: rgba(37,102,201,.08);
+  --pp-b20: rgba(37,102,201,.16);
+  --pp-b35: rgba(37,102,201,.3);
+  --pp-r10: rgba(200,40,29,.08);
+  --pp-r20: rgba(200,40,29,.16);
+  --pp-r35: rgba(200,40,29,.3);
+  --pp-g10: rgba(79,138,30,.08);
+  --pp-g25: rgba(79,138,30,.2);
+  --pp-gold10: rgba(169,113,10,.08);
+  --pp-gold25: rgba(169,113,10,.22);
+  --pp-orange-10: rgba(196,105,10,.08);
+  --pp-orange-25: rgba(196,105,10,.2);
+  --pp-orange-35: rgba(196,105,10,.32);
+
+  --pp-grey: #5b6b7d;
+  --pp-grey10: rgba(91,107,125,.08);
+  --pp-grey20: rgba(91,107,125,.16);
+  --pp-grey35: rgba(91,107,125,.3);
+  --pp-grey55: rgba(91,107,125,.5);
+  --pp-grey75: rgba(91,107,125,.7);
+
+  --pp-bg0: #fbfcfe;
+  --pp-bg1: #f3f6fa;
+  --pp-bg2: #ffffff;
+  --pp-bg3: #eef2f7;
+  --pp-txt: #16242f;
+  --pp-txt2: rgba(20,40,60,.65);
+  --pp-txt3: rgba(20,40,60,.42);
+  --pp-heading: #0c1722;
+  --pp-bdr: rgba(37,102,201,.14);
+  --pp-bdr2: rgba(37,102,201,.25);
+  --pp-info-c: #1d4f91;
+  --pp-danger-c: #a3261b;
+  --pp-success-c: #3c6c17;
+  --pp-warning-c: #8a5d08;
+  --pp-scrim: rgba(220,228,238,.85);
+  --pp-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --pp-font-size: 14px;
+
+  --pp-hud-bar-track-bg-col: rgba(91,107,125,.08);
+  --pp-hud-bar-track-border-col: rgba(74,144,226,.35);
+  --pp-hud-bar-fill-light-bg-col: rgba(91,107,125,.3);
+  --pp-hud-bar-fill-medium-bg-col: rgba(74,144,226,.35);
+  --pp-hud-bar-fill-dark-bg-col: #4A90E2;
+  --pp-hud-metric-color: #2566c9;
+
+  /* MenuTree / portal colors: light-mode equivalents */
+  --pp-menu-text-strong: rgba(20,40,60,.85);
+  --pp-menu-icon: rgba(20,40,60,.55);
+  --pp-menu-nav: rgba(20,40,60,.42);
+  --pp-menu-divider: rgba(37,102,201,.10);
+  --pp-grid-line: rgba(37,102,201,.055);
+  --pp-grid-line-strong: rgba(37,102,201,.08);
+  --pp-scanline-color: rgba(37,102,201,.18);
+}

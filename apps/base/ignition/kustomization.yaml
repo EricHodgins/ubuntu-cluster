@@ -11,9 +11,13 @@ configMapGenerator:
     files:
       - themes/precisionpac/index.css
       - themes/precisionpac/config.json
-      - themes/precisionpac/resource.json      
+      - themes/precisionpac/resource.json
+      - themes/precisionpac/overrides.css
+      - themes/precisionpac/variables.css 
   - name: ignition-theme-precisionpac-light
     files:
       - themes/precisionpac-light/index.css
       - themes/precisionpac-light/config.json
-      - themes/precisionpac-light/resource.json      
+      - themes/precisionpac-light/resource.json
+      - themes/precisionpac-light/overrides.css
+      - themes/precisionpac-light/variables.css

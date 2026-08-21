@@ -5,7 +5,9 @@
   "overridable": true,
   "files": [
     "config.json",
-    "index.css"
+    "index.css",
+    "variables.css",
+    "overrides.css"
   ],
   "attributes": {}
 }
