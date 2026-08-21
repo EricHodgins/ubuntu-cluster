@@ -7,12 +7,12 @@ resources:
   - storage.yaml
 
 configMapGenerator:
-  - name: precisionpac
+  - name: ignition-theme-precisionpac
     files:
       - themes/precisionpac/index.css
       - themes/precisionpac/config.json
       - themes/precisionpac/resource.json      
-  - name: precisionpac-light
+  - name: ignition-theme-precisionpac-light
     files:
       - themes/precisionpac-light/index.css
       - themes/precisionpac-light/config.json
