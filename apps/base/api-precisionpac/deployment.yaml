@@ -26,7 +26,7 @@ spec:
       
         - name: api-precisionpac
 
-          image: northamerica-northeast2-docker.pkg.dev/aqueous-cabinet-203817/api-precisionpac/api-precisionpac:0.1.0                 
+          image: northamerica-northeast2-docker.pkg.dev/aqueous-cabinet-203817/api-precisionpac/api-precisionpac:0.2.0                 
           imagePullPolicy: IfNotPresent
 
           ports:
