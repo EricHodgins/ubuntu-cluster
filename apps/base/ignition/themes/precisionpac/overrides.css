@@ -156,6 +156,38 @@
   color: var(--pp-blue) !important;
 }
 
+/* ── MORE BUTTON — ghost style, sits just outside the segment ── */
+.pp-more-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  background-color: transparent !important;
+  color: var(--pp-txt2) !important;
+  border: 1px solid var(--pp-bdr2) !important;
+  border-radius: 4px !important;
+  padding: 7px 12px !important;
+}
+.pp-more-btn:hover {
+  border-color: var(--pp-blue) !important;
+  color: var(--pp-blue) !important;
+  background-color: var(--pp-b10) !important;
+  opacity: 1 !important;
+}
+.pp-more-btn .text {
+  color: inherit !important;
+}
+
+/* ── MORE BUTTON — active state (popup open, or a non-quick
+     preset like "This month" / "Custom" is the current selection) ── */
+.pp-more-btn--active {
+  border-color: var(--pp-b35) !important;
+  color: var(--pp-blue) !important;
+  background-color: var(--pp-b10) !important;
+}
+.pp-more-btn--active .text {
+  color: var(--pp-blue) !important;
+}
+
 /* ══════════════════════════════════════════════════════════════
    DATE RANGE SEGMENTED CONTROL — Perspective style classes
 
@@ -181,11 +213,7 @@
    ══════════════════════════════════════════════════════════════ */
 
 /* ── WRAPPER — the Flex Container that holds the segment buttons ── */
-/* Compounded onto ia_container--primary and flex-container (the other
-   classes Perspective renders on this element) so it beats whatever
-   ../dark/index.css sets on those, regardless of import order. */
-.ia_container--primary.psc-pp-segment,
-.flex-container.psc-pp-segment {
+.psc-pp-segment {
   display: inline-flex !important;
   border: 1px solid var(--pp-bdr2) !important;
   border-radius: 4px !important;
