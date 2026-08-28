@@ -156,76 +156,6 @@
   color: var(--pp-blue) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   DATE RANGE SEGMENTED CONTROL — Perspective style classes
-   Assign "pp-segment" to the Flex Container wrapping the buttons.
-   Assign "pp-segment-btn" to each Button inside it.
-   Bind each button's style.classes to add "pp-segment-btn--active"
-   when it matches view.custom.activePreset, e.g.:
-
-     if({view.custom.activePreset} = "7d",
-        "pp-segment-btn pp-segment-btn--active",
-        "pp-segment-btn")
-
-   Assign "pp-more-btn" to the trailing "More" button, and toggle
-   "pp-more-btn--active" the same way while the popup is open or a
-   non-quick preset (This month / Custom / etc.) is selected.
-   ══════════════════════════════════════════════════════════════ */
-
-/* ── WRAPPER — the Flex Container that holds the segment buttons ── */
-.pp-segment {
-  display: inline-flex !important;
-  border: 1px solid var(--pp-bdr2) !important;
-  border-radius: 4px !important;
-  overflow: hidden !important;
-  background-color: var(--pp-bg1) !important;
-}
-
-/* ── SEGMENT BUTTONS — base state (unselected) ── */
-/* Inherits size/weight/transition from .ia-button; this overrides
-   the shape + fill so segments read as one joined control. */
-.pp-segment-btn {
-  background-color: transparent !important;
-  color: var(--pp-txt2) !important;
-  border: none !important;
-  border-right: 1px solid var(--pp-bdr2) !important;
-  border-radius: 0 !important;
-  padding: 7px 14px !important;
-}
-.pp-segment .pp-segment-btn:last-of-type {
-  border-right: none !important;
-}
-.pp-segment .pp-segment-btn:first-of-type {
-  border-top-left-radius: 4px !important;
-  border-bottom-left-radius: 4px !important;
-}
-.pp-segment .pp-segment-btn:last-of-type {
-  border-top-right-radius: 4px !important;
-  border-bottom-right-radius: 4px !important;
-}
-.pp-segment-btn:hover {
-  color: var(--pp-blue) !important;
-  background-color: var(--pp-b10) !important;
-  opacity: 1 !important;
-}
-.pp-segment-btn .text {
-  color: inherit !important;
-}
-
-/* ── SEGMENT BUTTONS — active/selected state ── */
-.pp-segment-btn--active {
-  background-color: var(--pp-b10) !important;
-  color: var(--pp-blue) !important;
-  font-weight: 600 !important;
-}
-.pp-segment-btn--active:hover {
-  background-color: var(--pp-b10) !important;
-  opacity: 1 !important;
-}
-.pp-segment-btn--active .text {
-  color: var(--pp-blue) !important;
-}
-
 /* ── MORE BUTTON — ghost style, sits just outside the segment ── */
 .pp-more-btn {
   display: inline-flex !important;
@@ -256,6 +186,127 @@
 }
 .pp-more-btn--active .text {
   color: var(--pp-blue) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DATE RANGE SEGMENTED CONTROL — Perspective style classes
+
+   NOTE: Perspective renders any custom class you type into
+   style.classes with a "psc-" prefix in the DOM (e.g. typing
+   "pp-segment" in the Designer results in class="psc-pp-segment").
+   The selectors below target that rendered "psc-" form — you still
+   TYPE the plain name (without "psc-") into style.classes in the
+   Designer itself.
+
+   Assign "pp-segment" to the Flex Container wrapping the buttons.
+   Assign "pp-segment-btn" to each Button inside it.
+   Bind each button's style.classes to add "pp-segment-btn--active"
+   when it matches view.custom.activePreset, e.g.:
+
+     if({view.custom.activePreset} = "7d",
+        "pp-segment-btn pp-segment-btn--active",
+        "pp-segment-btn")
+
+   Assign "pp-more-btn" to the trailing "More" button, and toggle
+   "pp-more-btn--active" the same way while the popup is open or a
+   non-quick preset (This month / Custom / etc.) is selected.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── WRAPPER — the Flex Container that holds the segment buttons ── */
+.psc-pp-segment {
+  display: inline-flex !important;
+  border: 1px solid var(--pp-bdr2) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  background-color: var(--pp-bg1) !important;
+}
+
+/* ── SEGMENT BUTTONS — base state (unselected) ── */
+/* Inherits size/weight/transition from .ia-button; this overrides
+   the shape + fill so segments read as one joined control. */
+.ia-button.psc-pp-segment-btn {
+  background-color: transparent !important;
+  color: var(--pp-txt2) !important;
+  border: none !important;
+  border-right: 1px solid var(--pp-bdr2) !important;
+  border-radius: 0 !important;
+  padding: 7px 14px !important;
+}
+.psc-pp-segment .ia-button.psc-pp-segment-btn:last-of-type {
+  border-right: none !important;
+}
+.psc-pp-segment .ia-button.psc-pp-segment-btn:first-of-type {
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+}
+.psc-pp-segment .ia-button.psc-pp-segment-btn:last-of-type {
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+}
+.ia-button.psc-pp-segment-btn:hover {
+  color: var(--pp-blue) !important;
+  background-color: var(--pp-b10) !important;
+  opacity: 1 !important;
+}
+.psc-pp-segment-btn .text {
+  color: inherit !important;
+}
+
+/* ── SEGMENT BUTTONS — active/selected state ── */
+.ia-button.psc-pp-segment-btn--active {
+  background-color: var(--pp-b10) !important;
+  color: var(--pp-blue) !important;
+  font-weight: 600 !important;
+}
+.ia-button.psc-pp-segment-btn--active:hover {
+  background-color: var(--pp-b10) !important;
+  opacity: 1 !important;
+}
+.psc-pp-segment-btn--active .text {
+  color: var(--pp-blue) !important;
+}
+
+/* ── MORE BUTTON — ghost style, sits just outside the segment ── */
+.ia-button.psc-pp-more-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  background-color: transparent !important;
+  color: var(--pp-txt2) !important;
+  border: 1px solid var(--pp-bdr2) !important;
+  border-radius: 4px !important;
+  padding: 7px 12px !important;
+}
+.ia-button.psc-pp-more-btn:hover {
+  border-color: var(--pp-blue) !important;
+  color: var(--pp-blue) !important;
+  background-color: var(--pp-b10) !important;
+  opacity: 1 !important;
+}
+.psc-pp-more-btn .text {
+  color: inherit !important;
+}
+
+/* ── MORE BUTTON — active state (popup open, or a non-quick
+     preset like "This month" / "Custom" is the current selection) ── */
+.ia-button.psc-pp-more-btn--active {
+  border-color: var(--pp-b35) !important;
+  color: var(--pp-blue) !important;
+  background-color: var(--pp-b10) !important;
+}
+.psc-pp-more-btn--active .text {
+  color: var(--pp-blue) !important;
+}
+
+/* ── CURRENT RANGE LABEL — small caption under the control,
+     e.g. "Showing acres for 30D" ── */
+.psc-pp-range-label {
+  font-size: 11px !important;
+  color: var(--pp-txt3) !important;
+  letter-spacing: 0.02em !important;
+}
+.psc-pp-range-label .text {
+  color: inherit !important;
 }
 
 /* ── CURRENT RANGE LABEL — small caption under the control,
