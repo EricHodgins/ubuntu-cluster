@@ -156,38 +156,6 @@
   color: var(--pp-blue) !important;
 }
 
-/* ── MORE BUTTON — ghost style, sits just outside the segment ── */
-.pp-more-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 5px !important;
-  background-color: transparent !important;
-  color: var(--pp-txt2) !important;
-  border: 1px solid var(--pp-bdr2) !important;
-  border-radius: 4px !important;
-  padding: 7px 12px !important;
-}
-.pp-more-btn:hover {
-  border-color: var(--pp-blue) !important;
-  color: var(--pp-blue) !important;
-  background-color: var(--pp-b10) !important;
-  opacity: 1 !important;
-}
-.pp-more-btn .text {
-  color: inherit !important;
-}
-
-/* ── MORE BUTTON — active state (popup open, or a non-quick
-     preset like "This month" / "Custom" is the current selection) ── */
-.pp-more-btn--active {
-  border-color: var(--pp-b35) !important;
-  color: var(--pp-blue) !important;
-  background-color: var(--pp-b10) !important;
-}
-.pp-more-btn--active .text {
-  color: var(--pp-blue) !important;
-}
-
 /* ══════════════════════════════════════════════════════════════
    DATE RANGE SEGMENTED CONTROL — Perspective style classes
 
@@ -230,18 +198,25 @@
   border: none !important;
   border-right: 1px solid var(--pp-bdr2) !important;
   border-radius: 0 !important;
+  margin: 0 !important;
   padding: 7px 14px !important;
 }
-.psc-pp-segment .ia-button.psc-pp-segment-btn:last-of-type {
-  border-right: none !important;
-}
-.psc-pp-segment .ia-button.psc-pp-segment-btn:first-of-type {
+
+/* ── FIRST/LAST ROUNDING — data-driven via Flex Repeater ──
+   The repeater wraps each button in its own item container, so the
+   buttons themselves are never true siblings and :first-of-type /
+   :last-of-type on .psc-pp-segment-btn can't tell first from last —
+   every button ends up "the only one" in its own wrapper. Instead,
+   target the repeater's item-wrapper divs, which ARE real siblings
+   of each other regardless of how many presets the dataset has. */
+.psc-pp-segment [data-component="ia.display.flex-repeater"] > div:first-child .psc-pp-segment-btn {
   border-top-left-radius: 4px !important;
   border-bottom-left-radius: 4px !important;
 }
-.psc-pp-segment .ia-button.psc-pp-segment-btn:last-of-type {
+.psc-pp-segment [data-component="ia.display.flex-repeater"] > div:last-child .psc-pp-segment-btn {
   border-top-right-radius: 4px !important;
   border-bottom-right-radius: 4px !important;
+  border-right: none !important;
 }
 .ia-button.psc-pp-segment-btn:hover {
   color: var(--pp-blue) !important;
