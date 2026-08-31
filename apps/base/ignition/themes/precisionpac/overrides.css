@@ -11,6 +11,22 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
+   PERSPECTIVE SHELL FIX — .center page wrapper
+   Perspective's own generated shell only sets max-height on this
+   element, never height. Percentage heights on children (including
+   height:100% on a view's root container) resolve against the
+   parent's HEIGHT property specifically — max-height doesn't count,
+   even though it visually clamps the box. Without an actual height
+   here, child overflow:auto containers have nothing definite to
+   overflow against, so tall pages silently clip instead of scrolling.
+   This mirrors the existing max-height value so it changes nothing
+   for pages that already fit, and only fixes the ones that don't.
+   ══════════════════════════════════════════════════════════════ */
+.center {
+  height: calc(100% - 60px) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
    PERSPECTIVE .ia- OVERRIDES
    These target Perspective's own internal element classes.
    No style > classes needed — they apply to every instance.
