@@ -2099,6 +2099,26 @@ div.psc-pp-hud-metric-unit span,
 
 /* ── PAGINATION ──────────────────────────────────────────────── */
 
+/* The pager sits in a flex column alongside the filter bar, header,
+   and body rows inside the table's fixed-height wrapper. Without
+   protection, it can get squeezed for vertical space when the body
+   content is tall, clipping its top edge. flex-shrink:0 guarantees
+   it keeps its full natural height — any space pressure falls on
+   the body instead, which already scrolls internally. */
+.pager-container {
+  flex-shrink: 0 !important;
+}
+
+/* The native pager row (First/prev/page numbers/next/Last + size
+   chooser + jump-to) has no wrap behavior by default — at narrower
+   table widths, the combined width of all these pieces exceeds the
+   row and the rightmost buttons (often the last page number and
+   "Last") get clipped instead of moving to a second line. */
+.pager {
+  flex-wrap: wrap !important;
+  row-gap: 6px !important;
+}
+
 .psc-pp-pg-footer {
   display: flex !important;
   justify-content: space-between !important;
@@ -2125,29 +2145,42 @@ div.psc-pp-hud-metric-unit span,
 
 /* ── PAGER PAGE SIZE DROPDOWN ───────────────────────────────── */
 
-/* Wrapper */
+/* Wrapper — min-width keeps it from shrinking to fit only the
+   shortest option ("5 rows"), which is what squeezed "100 rows"
+   against the arrow icon with no breathing room */
 .ia_pager__pageSizeChooser {
   background-color: var(--pp-bg2) !important;
   border: 1px solid var(--pp-bdr2) !important;
   border-radius: 2px !important;
+  min-width: 78px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
 }
 
-/* The <select> element */
+/* The <select> element — right padding reserves room for the arrow
+   icon so text never collides with it regardless of option length */
 .ia_pager__pageSizeChooser .iaSelectCommon_select,
 .ia_select__select {
   background-color: var(--pp-bg2) !important;
   border: none !important;
   color: var(--pp-txt3) !important;
   font-size: 10px !important;
-  padding: 3px 6px !important;
+  padding: 3px 4px 3px 6px !important;
+  padding-right: 18px !important;
   cursor: pointer !important;
   appearance: none !important;
+  width: 100% !important;
 }
 
-/* Dropdown arrow icon */
+/* Dropdown arrow icon — fixed width so it never gets pushed around
+   by the select's own content */
 .ia_pager__pageSizeChooser .iaSelectCommon_dropdownIcon,
 .ia_select__dropdownIcon {
   color: var(--pp-txt3) !important;
+  flex-shrink: 0 !important;
+  width: 16px !important;
+  margin-right: 4px !important;
 }
 
 /* Individual options in the dropdown */
@@ -2165,8 +2198,8 @@ div.psc-pp-hud-metric-unit span,
 
 /* All page number buttons */
 .ia_pager__page {
-  width: 28px !important;
-  height: 28px !important;
+  width: 24px !important;
+  height: 24px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -2175,7 +2208,7 @@ div.psc-pp-hud-metric-unit span,
   border-radius: 2px !important;
   color: var(--pp-txt3) !important;
   font-size: 11px !important;
-  margin: 0 2px !important;
+  margin: 0 1px !important;
   cursor: pointer !important;
 }
 
