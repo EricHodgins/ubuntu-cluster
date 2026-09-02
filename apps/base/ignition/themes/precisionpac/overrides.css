@@ -1,9 +1,9 @@
 /* ══════════════════════════════════════════════════════════════
-   LIGHT THEME — same variable names, light-mode values.
-   Apply the .theme-light class to a top-level container (see the
-   binding instructions provided alongside this file) and every
-   component below re-themes automatically since they all read
-   from var(--pp-*) rather than hardcoded colors.
+   DARK THEME — PrecisionPac base overrides.
+   Every component below reads from var(--pp-*) rather than
+   hardcoded colors, so the same rules apply consistently across
+   both theme files — only the values in variables.css differ
+   between dark and light.
    ══════════════════════════════════════════════════════════════ */
 
 * {
