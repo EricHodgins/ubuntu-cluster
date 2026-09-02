@@ -11,22 +11,6 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   PERSPECTIVE SHELL FIX — .center page wrapper
-   Perspective's own generated shell only sets max-height on this
-   element, never height. Percentage heights on children (including
-   height:100% on a view's root container) resolve against the
-   parent's HEIGHT property specifically — max-height doesn't count,
-   even though it visually clamps the box. Without an actual height
-   here, child overflow:auto containers have nothing definite to
-   overflow against, so tall pages silently clip instead of scrolling.
-   This mirrors the existing max-height value so it changes nothing
-   for pages that already fit, and only fixes the ones that don't.
-   ══════════════════════════════════════════════════════════════ */
-/* .center {
-  height: calc(100% - 60px) !important;
-} */
-
-/* ══════════════════════════════════════════════════════════════
    PERSPECTIVE .ia- OVERRIDES
    These target Perspective's own internal element classes.
    No style > classes needed — they apply to every instance.
@@ -2146,41 +2130,46 @@ div.psc-pp-hud-metric-unit span,
 /* ── PAGER PAGE SIZE DROPDOWN ───────────────────────────────── */
 
 /* Wrapper — min-width keeps it from shrinking to fit only the
-   shortest option ("5 rows"), which is what squeezed "100 rows"
-   against the arrow icon with no breathing room */
+   shortest option ("5 rows"). position:relative gives us a fixed
+   anchor point in case the dropdown icon is absolutely positioned
+   internally by Perspective (common for custom-drawn select arrows),
+   in which case flex/margin on the icon itself do nothing — an
+   absolutely positioned element ignores flex-item properties
+   entirely since it's removed from normal flow. */
 .ia_pager__pageSizeChooser {
   background-color: var(--pp-bg2) !important;
   border: 1px solid var(--pp-bdr2) !important;
   border-radius: 2px !important;
-  min-width: 78px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
+  min-width: 90px !important;
+  position: relative !important;
 }
 
-/* The <select> element — right padding reserves room for the arrow
-   icon so text never collides with it regardless of option length */
+/* The <select> element — generous right padding reserves room for
+   the arrow icon regardless of how it's positioned, so text never
+   collides with it even at the longest option ("100 rows") */
 .ia_pager__pageSizeChooser .iaSelectCommon_select,
 .ia_select__select {
   background-color: var(--pp-bg2) !important;
   border: none !important;
   color: var(--pp-txt3) !important;
   font-size: 10px !important;
-  padding: 3px 4px 3px 6px !important;
-  padding-right: 18px !important;
+  padding: 3px 24px 3px 6px !important;
   cursor: pointer !important;
   appearance: none !important;
   width: 100% !important;
+  box-sizing: border-box !important;
 }
 
-/* Dropdown arrow icon — fixed width so it never gets pushed around
-   by the select's own content */
+/* Dropdown arrow icon — explicitly positioned ourselves rather than
+   trusting flex context, since it's likely absolute already */
 .ia_pager__pageSizeChooser .iaSelectCommon_dropdownIcon,
 .ia_select__dropdownIcon {
   color: var(--pp-txt3) !important;
-  flex-shrink: 0 !important;
-  width: 16px !important;
-  margin-right: 4px !important;
+  position: absolute !important;
+  right: 6px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
 }
 
 /* Individual options in the dropdown */
