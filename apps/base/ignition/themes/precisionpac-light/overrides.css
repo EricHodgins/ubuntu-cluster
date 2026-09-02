@@ -22,9 +22,9 @@
    This mirrors the existing max-height value so it changes nothing
    for pages that already fit, and only fixes the ones that don't.
    ══════════════════════════════════════════════════════════════ */
-.center {
+/* .center {
   height: calc(100% - 60px) !important;
-}
+} */
 
 /* ══════════════════════════════════════════════════════════════
    PERSPECTIVE .ia- OVERRIDES
