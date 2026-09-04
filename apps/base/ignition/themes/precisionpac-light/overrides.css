@@ -11,6 +11,57 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
+   CONTEXT MENU / KEBAB POPUP
+   Assign "psc-pp-menu" to the popup's root Flex Container.
+   Assign "psc-pp-menu-item" to each button inside it (replacing
+   psc-pp-btn-secondary for this use case — that class is designed
+   for standalone buttons, not menu rows). Also recommended: switch
+   each button's type away from "Primary" in the Designer, same as
+   the segmented control — it carries ia_button--primary along for
+   no reason here, this rule just overrides it defensively.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Popups are focusable (tabindex) so they can pick up a keyboard
+   focus ring by default — remove it, since the menu card itself
+   already reads clearly without one. */
+.popup.ia_popup,
+.popup.ia_popup *:focus {
+  outline: none !important;
+}
+
+/* The menu card itself */
+.ia_container--primary.psc-pp-menu {
+  background-color: var(--pp-bg2) !important;
+  border: 1px solid var(--pp-bdr2) !important;
+  border-radius: 6px !important;
+  padding: 4px !important;
+  gap: 2px !important;
+  box-shadow: 0 6px 20px rgba(2, 8, 16, 0.15) !important;
+}
+
+/* Each menu row — flat, no individual border, left-aligned */
+.ia-button.psc-pp-menu-item {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 4px !important;
+  color: var(--pp-txt2) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  padding: 9px 12px !important;
+  justify-content: flex-start !important;
+}
+.ia-button.psc-pp-menu-item:hover {
+  background-color: var(--pp-b10) !important;
+  color: var(--pp-blue) !important;
+  opacity: 1 !important;
+}
+.ia-button.psc-pp-menu-item .text {
+  color: inherit !important;
+  text-align: left !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
    PERSPECTIVE .ia- OVERRIDES
    These target Perspective's own internal element classes.
    No style > classes needed — they apply to every instance.
