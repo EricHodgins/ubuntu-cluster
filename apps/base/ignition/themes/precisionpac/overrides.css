@@ -1700,6 +1700,11 @@ div.psc-pp-hud-metric-unit span,
   color: var(--pp-blue) !important;
 }
 
+.psc-pp-bc-item:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* ── CUSTOM TAB BAR ── */
 .psc-pp-tab-bar {
   background-color: var(--pp-bg1) !important;
