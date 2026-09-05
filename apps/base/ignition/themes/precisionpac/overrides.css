@@ -1696,6 +1696,10 @@ div.psc-pp-hud-metric-unit span,
   margin-left: 6px; /* replaces the repeater's row gap on this side if needed */
 }
 
+.psc-pp-bc-item:last-child {
+  color: var(--pp-blue) !important;
+}
+
 /* ── CUSTOM TAB BAR ── */
 .psc-pp-tab-bar {
   background-color: var(--pp-bg1) !important;
