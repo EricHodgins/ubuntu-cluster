@@ -2111,7 +2111,12 @@ div.psc-pp-hud-metric-unit span,
 }
 
 /* Row hover — works via rows.highlight.style */
-.psc-pp-tr-hover {
+/* .psc-pp-tr-hover {
+  background-color: var(--pp-b10) !important;
+} */
+ 
+/* Row hover — recolor the cells, since they paint over the row */
+.psc-pp-tr:hover .psc-pp-td {
   background-color: var(--pp-b10) !important;
 }
 
