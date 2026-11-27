@@ -3317,3 +3317,113 @@ div.psc-pp-hud-metric-unit span,
 .ia_menuTreeComponent__header .label-icon {
   color: var(--pp-blue);
 }
+
+/* ══════════════════════════════════════════════════════════════
+   SKELETON LOADERS — PrecisionPac
+   Paste this whole block into BOTH theme stylesheets (dark + light),
+   same as the rest of the file. Only the two --pp-skel-* variables
+   differ between themes (see the variables.css section below).
+
+   Classes (type WITHOUT "psc-" in style.classes):
+     pp-skel-panel   → root Flex Container of a skeleton HUD
+                       (use together with pp-hud-panel so it has the same frame)
+     pp-skel         → any placeholder block (Flex Container or empty Label)
+     pp-skel-title   → sized like pp-hud-title   (11px uppercase line)
+     pp-skel-metric  → sized like pp-hud-metric  (26px big number)
+     pp-skel-sub     → sized like pp-hud-sub     (12px caption)
+     pp-skel-bar     → sized like a pp-hud-bar-track row
+     pp-skel-line    → generic 10px text line
+     pp-skel-circle  → round (icons / status dots / avatars)
+     pp-skel-w25 / w40 / w60 / w80 / w100 → width helpers
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── ADD TO variables.css ─────────────────────────────────────
+   Dark (default :root or wherever your dark vars live):
+     --pp-skel-base:  rgba(74, 144, 226, 0.07);
+     --pp-skel-shine: rgba(74, 144, 226, 0.18);
+
+   Light (.theme-light):
+     --pp-skel-base:  rgba(20, 40, 70, 0.07);
+     --pp-skel-shine: rgba(255, 255, 255, 0.75);
+
+   If you skip this, the fallbacks below still look fine.
+   ────────────────────────────────────────────────────────────── */
+
+@keyframes pp-skel-shimmer {
+  0%   { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+
+@keyframes pp-skel-breathe {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.45; }
+}
+
+/* ── BASE BLOCK ──
+   Compounded onto ia_flexContainer / ia_labelComponent so it beats the
+   theme's own container backgrounds (same reason as the pp-bg-* rules). */
+.psc-pp-skel,
+.ia_flexContainer.psc-pp-skel,
+.ia_labelComponent.psc-pp-skel {
+  background-color: var(--pp-skel-base, var(--pp-b10)) !important;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 40%,
+    var(--pp-skel-shine, rgba(74, 144, 226, 0.18)) 50%,
+    transparent 60%,
+    transparent 100%
+  ) !important;
+  background-size: 300% 100% !important;
+  background-repeat: no-repeat !important;
+  animation: pp-skel-shimmer 1.6s ease-in-out infinite !important;
+  border: none !important;
+  border-radius: 2px !important;
+  color: transparent !important;   /* hide any placeholder label text */
+  pointer-events: none !important;
+  flex-shrink: 0 !important;
+}
+.psc-pp-skel span,
+.psc-pp-skel .text {
+  visibility: hidden !important;
+}
+
+/* ── SHAPES — match the real HUD typography sizes ── */
+.psc-pp-skel-title  { height: 11px !important; width: 40%; margin-bottom: 10px !important; }
+.psc-pp-skel-metric { height: 26px !important; width: 55%; border-radius: 3px !important; }
+.psc-pp-skel-sub    { height: 12px !important; width: 70%; margin-top: 6px !important; }
+.psc-pp-skel-line   { height: 10px !important; width: 100%; }
+.psc-pp-skel-bar    { height: 18px !important; width: 100%; border-radius: 2px !important; }
+.psc-pp-skel-circle { border-radius: 50% !important; }
+
+/* Width helpers (override the defaults above) */
+.psc-pp-skel-w25  { width: 25% !important; }
+.psc-pp-skel-w40  { width: 40% !important; }
+.psc-pp-skel-w60  { width: 60% !important; }
+.psc-pp-skel-w80  { width: 80% !important; }
+.psc-pp-skel-w100 { width: 100% !important; }
+
+/* ── SKELETON PANEL ──
+   Use as: "pp-hud-panel pp-skel-panel" so it keeps the exact HUD frame,
+   border and padding — only the contents are placeholders. */
+.psc-pp-skel-panel {
+  gap: 4px !important;
+}
+
+/* Stagger rows slightly so the shimmer reads as a wave, not a blink */
+.psc-pp-skel-panel > :nth-child(2) .psc-pp-skel,
+.psc-pp-skel-panel > .psc-pp-skel:nth-child(2) { animation-delay: 0.08s !important; }
+.psc-pp-skel-panel > :nth-child(3) .psc-pp-skel,
+.psc-pp-skel-panel > .psc-pp-skel:nth-child(3) { animation-delay: 0.16s !important; }
+.psc-pp-skel-panel > :nth-child(4) .psc-pp-skel,
+.psc-pp-skel-panel > .psc-pp-skel:nth-child(4) { animation-delay: 0.24s !important; }
+
+/* ── ACCESSIBILITY — no sweeping motion for users who opt out ── */
+@media (prefers-reduced-motion: reduce) {
+  .psc-pp-skel,
+  .ia_flexContainer.psc-pp-skel,
+  .ia_labelComponent.psc-pp-skel {
+    background-image: none !important;
+    animation: pp-skel-breathe 1.8s ease-in-out infinite !important;
+  }
+}

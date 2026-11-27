@@ -70,4 +70,8 @@
   --pp-grid-line: rgba(74,144,226,.055);
   --pp-grid-line-strong: rgba(74,144,226,.08);
   --pp-scanline-color: rgba(74,144,226,.18);
+
+  /* Skeleton loading colors */
+  --pp-skel-base:  rgba(20, 40, 70, 0.07);
+  --pp-skel-shine: rgba(255, 255, 255, 0.75);  
 }
